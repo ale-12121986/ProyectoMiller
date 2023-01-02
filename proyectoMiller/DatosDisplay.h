@@ -18,17 +18,17 @@ class DatosDisplay{
 /*8*/ {0,0,0,1},
 /*9*/ {1,0,0,1},
 };  
-    const int u1 = 22;
-    const int u2 = 24;
-    const int u3 = 26;
-    const int u4 = 28;
-    const int d1 = 23;
-    const int d2 = 25;
-    const int d3 = 27;
-    const int d4 = 29;
+    const byte u1 = 22;
+    const byte u2 = 24;
+    const byte u3 = 26;
+    const byte u4 = 28;
+    const byte d1 = 23;
+    const byte d2 = 25;
+    const byte d3 = 27;
+    const byte d4 = 29;
     const byte dis1 = 30;
     const byte dis2 = 31;
-    const int habilitarDisplay = 32; 
+    const byte habilitarDisplay = 32; 
     int N = 4;
     int displayUnidad[4] = {u1, u2, u3, u4};
     int displayDecena[4] = {d1, d2, d3, d4};
