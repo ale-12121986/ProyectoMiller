@@ -52,26 +52,27 @@ void leerDato (float Valor){
 
 void barridoCuerpo(int cuerpos){  //barre todos los cuerpos de las calvija e imprime todos los datos en los display
   //controlarClavija.posInicial();
-  int aa = 0;
-  for (int i=1; i <= 14; i++) {
-    aa++;
+  int i=1;
+  do {
+    direccionesDeBotones();
     Serial.print("leyendo clavija");
-    Serial.println(i);
-    if (aa == 5) aa = 1; 
-      controlarClavija.leerPotIzquierdo(cuerpos, i);
-      retardo100ms();
-      valor1 = analogRead(pot);
-      leerDato(valor1);
-      datosDisplay.enviarDato(Decena, Centena, aa);
-      aa++;
-      controlarClavija.leerPotderecho(cuerpos, i);
-      retardo100ms();
-      valor1 = analogRead(pot);
-      leerDato(valor1);
-      datosDisplay.enviarDato(Decena, Centena, aa);
-    }
+    Serial.println(i); 
+    controlarClavija.leerPotIzquierdo(cuerpos, i);
+    retardo100ms();
+    leerPotenciometro = ejecucionDeClavija(4);  //va a la rutina de escribir en los display y trae el valor del potenciometro
+    controlarClavija.leerPotderecho(cuerpos, i);
+    retardo100ms();
+    i++;
+    leerPotenciometro = ejecucionDeClavija(3);
+    controlarClavija.leerPotIzquierdo(cuerpos, i);
+    retardo100ms();
+    leerPotenciometro = ejecucionDeClavija(2);
+    controlarClavija.leerPotderecho(cuerpos, i);
+    retardo100ms();
+    leerPotenciometro = ejecucionDeClavija(1);
+    i++;
+  }while (i<=14);      
 }
-
 void guardarMemoria(int cuerpos){   //Se guarda en memoria el valor de todos los potenciometros de cada cuerpo
   int8_t dirMemoria = 0;
   for (int i= 1; i<= 14; i++){
@@ -350,7 +351,7 @@ void loop() {
       } 
     }
     controlarClavija.resetflipflop();
-    retardo100ms();
+    retardo10ms();
   }
 
   if (digitalRead(Boton1) == HIGH) {  //motor izquierdo que gira izquierda

@@ -57,6 +57,7 @@ class ControlClavija{
     pinMode(c, OUTPUT);
     pinMode(d, OUTPUT);
     pinMode(e, OUTPUT);
+    
     pinMode(f, OUTPUT);
     pinMode(g, OUTPUT);
   }
@@ -128,14 +129,14 @@ class ControlClavija{
   
   void leerPotIzquierdo(int cuerpo, int placa){
     imprimirDirClavija(cuerpo, placa);
-    delay(5); 
+    delay(10); 
     digitalWrite(h, LOW);
     digitalWrite(j, HIGH);
     
   }
   void leerPotderecho(int cuerpo, int placa){
     imprimirDirClavija(cuerpo, placa);
-    delay(5); 
+    delay(10); 
     digitalWrite(h, HIGH);
     digitalWrite(j, HIGH);
     
