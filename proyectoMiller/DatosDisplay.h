@@ -15,7 +15,7 @@ class DatosDisplay{
 /*5*/ {1,0,1,0},
 /*6*/ {0,1,1,0},
 /*7*/ {1,1,1,0},
-/*8*/ {0,0,0,1},
+/*8*/ {0,0,0,1}, 
 /*9*/ {1,0,0,1},
 };  
     const byte u1 = 22;
@@ -59,7 +59,9 @@ class DatosDisplay{
       }
     }
     void imprimirDisplay(int unidad, int decena){
-      for (int i=0; i<N; i++){
+      Serial.println(decena);
+      Serial.println(unidad);      
+      for (int i=0; i<4; i++){
         digitalWrite(displayUnidad[i], DIGITOS[unidad][i]);
         digitalWrite(displayDecena[i], DIGITOS[decena][i]);
       }
