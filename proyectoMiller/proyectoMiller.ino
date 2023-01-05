@@ -18,8 +18,8 @@ const byte Boton5 = 6;  // 5
 const byte Boton6 = 3;  // 4
 const byte Boton7 = 4;  // 3
 const byte Boton8 = 7;  // 2
-const int pot = A0;
-//const int poteDerecho = A1;
+const int pot = A2;
+const int pot2 = A1;
 int Centena, Decena, Unidad; 
 //Se llama las clases
 DatosDisplay datosDisplay;
@@ -59,13 +59,13 @@ void barridoCuerpo(int cuerpos){  //barre todos los cuerpos de las calvija e imp
     Serial.println(i);
     if (aa == 5) aa = 1; 
       controlarClavija.leerPotIzquierdo(cuerpos, i);
-      delay(200);
+      retardo100ms();
       valor1 = analogRead(pot);
       leerDato(valor1);
       datosDisplay.enviarDato(Decena, Centena, aa);
       aa++;
       controlarClavija.leerPotderecho(cuerpos, i);
-      delay(200);
+      retardo100ms();
       valor1 = analogRead(pot);
       leerDato(valor1);
       datosDisplay.enviarDato(Decena, Centena, aa);
@@ -76,12 +76,12 @@ void guardarMemoria(int cuerpos){   //Se guarda en memoria el valor de todos los
   int8_t dirMemoria = 0;
   for (int i= 1; i<= 14; i++){
     controlarClavija.leerPotIzquierdo(cuerpos, i);
-    retardo300ms(); 
+    retardo100ms(); 
     valor1 = analogRead(pot);
     EEPROM.put(dirMemoria, valor1);
     dirMemoria++;
     controlarClavija.leerPotderecho(cuerpos, i);
-    retardo300ms(); 
+    retardo100ms(); 
     valor1 = analogRead(pot);
     EEPROM.put(dirMemoria, valor1);
     dirMemoria++;
@@ -93,7 +93,7 @@ void compararValoresCuerpos(int cuerpos){
   for(int i = 1; i<=14; i++){
     EEPROM.get(dirMemoria, valorMemoria);
     controlarClavija.leerPotIzquierdo(cuerpos, i);
-    retardo300ms(); 
+    retardo100ms(); 
     valorPot = analogRead(pot);
     while (valorPot < valorMemoria) {
     controlarClavija.motorIzquierdoMas(cuerpos, i);
@@ -104,7 +104,7 @@ void compararValoresCuerpos(int cuerpos){
     dirMemoria++;
     EEPROM.get(dirMemoria, valorMemoria);
     controlarClavija.leerPotderecho(cuerpos, i);
-    retardo300ms();
+    retardo100ms();
     valorPot =analogRead(pot);
     while (valorPot < valorMemoria) {
     controlarClavija.motorDerechoMas(cuerpos, i);
@@ -182,7 +182,9 @@ void retardo300ms(){
 void retardo10ms(){
   delay(10);
 }
-
+void retardo100ms(){
+  delay(100);
+}
 void setup() {
   controlarClavija.configurar();
   datosDisplay.configurar();
@@ -209,18 +211,19 @@ void loop() {
   delay(1000);
   Inicio:
   direccionControl.imprimirDireccion(6); //direccion de lk6  seleccion de M1/M2
-  delay(10);
+  retardo10ms();
   while (true) {//M1: trabajo M2: memoria
     while (digitalRead(Boton6) == LOW && digitalRead(Boton7) == LOW) {
     }
     if(digitalRead(Boton6 == HIGH) ){// Boton M1
       while (digitalRead(Boton6) == HIGH) {    
-      retardo50ms();
+      retardo10ms();
        //Serial.println("Se preciono M1 y se va a trabajo");
       }
       memoria = false;
       trabajo = true;
       Serial.println("Se preciono M1 y se va a trabajo");
+      retardo300ms();
       goto Trabajar;
     }
     if(digitalRead(Boton7 == HIGH)){ // Boton M2
@@ -245,7 +248,7 @@ void loop() {
       Serial.println("Se selecciono el cuerpo anterior");
       cuerpos = cuerpoViejo;
       while (digitalRead(Boton1) == HIGH) {
-        retardo300ms();    
+        retardo100ms();    
       }
       if (trabajo == true) {
         barridoCuerpo(cuerpos);
@@ -258,7 +261,7 @@ void loop() {
       cuerpos = 1;
       iluminacion.encenderCuerpo(1);
       while (digitalRead(Boton2) == HIGH) {    
-        retardo300ms();
+        retardo100ms();
       }
       if (trabajo == true) {
         barridoCuerpo(cuerpos);
@@ -270,7 +273,7 @@ void loop() {
       cuerpos = 2;
       iluminacion.encenderCuerpo(2);
       while (digitalRead(Boton3) == HIGH) {    
-        retardo300ms();
+        retardo100ms();
       }
       if (trabajo == true) {
         barridoCuerpo(cuerpos);
@@ -282,7 +285,7 @@ void loop() {
       cuerpos = 3;
       iluminacion.encenderCuerpo(3);
       while (digitalRead(Boton4) == HIGH) {    
-        retardo300ms();
+        retardo100ms();
       }
       if (trabajo == true) {
         barridoCuerpo(cuerpos);
@@ -294,7 +297,7 @@ void loop() {
       cuerpos = 4;
       iluminacion.encenderCuerpo(4);
       while (digitalRead(Boton5) == HIGH) {    
-        retardo300ms();
+        retardo100ms();
       }
       if (trabajo == true) {
         barridoCuerpo(cuerpos);
@@ -306,7 +309,7 @@ void loop() {
       cuerpos = 5;
       iluminacion.encenderCuerpo(6);
       while (digitalRead(Boton6) == HIGH) {    
-        retardo300ms();
+        retardo100ms();
       }
       barridoCuerpo(cuerpos);
     }
@@ -315,7 +318,7 @@ void loop() {
       cuerpos = 6;
       Serial.println("Se selecciono el cuerpo6");
       while (digitalRead(Boton7) == HIGH) {    
-        retardo300ms();
+        retardo100ms();
       }
       if (trabajo == true) {
         barridoCuerpo(cuerpos);        
@@ -326,7 +329,7 @@ void loop() {
       //posCuerpo = 6;
       Serial.println("Se selecciono cambiar");
       while (digitalRead(Boton8) == HIGH) {    
-      retardo300ms();
+      retardo100ms();
       }
     }
     if (trabajo == true) {
@@ -347,7 +350,7 @@ void loop() {
       } 
     }
     controlarClavija.resetflipflop();
-    retardo50ms();
+    retardo100ms();
   }
 
   if (digitalRead(Boton1) == HIGH) {  //motor izquierdo que gira izquierda
@@ -361,7 +364,7 @@ void loop() {
       }
     }
     controlarClavija.resetflipflop();
-    retardo50ms();
+    retardo10ms();
   }
 
   if (digitalRead(Boton2) == HIGH) {  //motor derecho que gira derecha
@@ -375,7 +378,7 @@ void loop() {
       }
     }    
     controlarClavija.resetflipflop();
-    retardo50ms();
+    retardo10ms();
   }
 
   if (digitalRead(Boton6) == HIGH) {  //motor derecho que gira izquierda
@@ -389,7 +392,7 @@ void loop() {
       }
     }
     controlarClavija.resetflipflop();
-    retardo50ms();
+    retardo10ms();
   }
 
   if(digitalRead(Boton4) == HIGH) {  //motor izquierdo que girai derecha
@@ -417,7 +420,7 @@ void loop() {
       }
     }
     controlarClavija.resetflipflop();
-    retardo50ms();
+    retardo10ms();
   }
 
   if (digitalRead(Boton8) == HIGH) {  //motor derecho que gira derecha
@@ -431,7 +434,7 @@ void loop() {
       }
     }
     controlarClavija.resetflipflop();
-    retardo50ms();
+    retardo10ms();
   }
   
   if (digitalRead(Boton5) == HIGH) {  //motor derecho que gira izquierda
@@ -445,7 +448,7 @@ void loop() {
       }
     }
     controlarClavija.resetflipflop();
-    retardo50ms();
+    retardo10ms();
   }
   
   //direccionControl.imprimirDireccion(4);  //cambiar de cuerpo
