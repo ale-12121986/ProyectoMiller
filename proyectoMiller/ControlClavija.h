@@ -122,9 +122,9 @@ class ControlClavija{
     delay(5);
     digitalWrite(l, LOW);
     digitalWrite(j, HIGH);
-    //for (int i=0; i<N; i++){
-    //  digitalWrite(dirclavijas[i], LOW);       
-    //}
+    for (int i=0; i<N; i++){
+      digitalWrite(dirclavijas[i], LOW);       
+    }
   }
   
   void leerPotIzquierdo(int cuerpo, int placa){
