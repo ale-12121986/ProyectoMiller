@@ -19,7 +19,7 @@ class Iluminacion{
   
   public:
   void configurar(){
-    for(int i=0; i<=15;i++){
+    for(int i=0; i<=9;i++){
       pinMode(dirControlIluminacion[i], OUTPUT);
       digitalWrite(dirControlIluminacion[i], LOW);
     }         

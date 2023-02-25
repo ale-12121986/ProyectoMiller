@@ -1,27 +1,122 @@
+#include "HardwareSerial.h"
+#include "WString.h"
+//Maestro
 #include "Arduino.h"
+#include <Wire.h>
 class Registro{
   private:
-  //Datos de cuerpo y registro
-    const bool regLat1 = 10;
-    const bool regLat2 = 11;
-    const bool regCir1 = 12;
-    const bool regCir2 = 13;
-    const bool regInc1 = 14;
-    const bool regInc2 = 15;
-    const bool concartorCuerpo1 = 47;
-    const bool concartorCuerpo2 = 48;
-    const bool concartorCuerpo3 = 49;
-    const bool concartorCuerpo4 = 50; 
-    const bool concartorCuerpo5 = 51;
-    const bool concartorCuerpo6 = 52;
-    int dirControl[10] = {
-      regLat1, regLat2, regCir1, regCir2, regInc1, concartorCuerpo1, concartorCuerpo2, concartorCuerpo3,
-      concartorCuerpo4, concartorCuerpo5, concartorCuerpo6
-    };
+  int registroLateral = 0, registroCircunferencial = 0, registroTintero = 0;
+  int cuerpo = 0;
+  char d = 0;
+  byte nDato = 0;
+  char cadena[20];  
+  String registroDeLectura = "";  
+  
   public:
     //Configurar cuerpos
-  void configurar(){
-    
+  void Configurar(){
+    Wire.begin(); // join I2C bus (address optional for master)
+        
   }
+  void setEnviarDato(int dato){
 
+  }
+  void moverRegistroLateral(int valor){
+    Wire.beginTransmission(1); // transmit to devi 
+    Wire.write("lateral");
+    registroDeLectura = "lateral";
+    switch (valor) {
+    case 1: //centra el valor lateral
+      Wire.write("LC");
+      Wire.endTransmission();    // stop transmitting
+    break;
+    case 2: //incrementa el valor lateral
+      Wire.write("LI");
+      Wire.endTransmission();    // stop transmitting
+    break;
+    case 3: //disminuye el valor lateral
+      Wire.write("LD");
+      Wire.endTransmission();    // stop transmitting
+    break;
+    default:
+    break;
+    }          
+  }
+  void moverRegistroCircunferencial(int valor){
+    Wire.beginTransmission(1); // transmit to devi
+    Wire.write("circunferencial");
+    registroDeLectura = "circunferencial";
+    switch (valor) {
+    case 1: //centra el valor lateral
+      Wire.write("CC");
+      Wire.endTransmission();    // stop transmitting
+    break;
+    case 2: //incrementa el valor lateral
+      Wire.write("CI");
+      Wire.endTransmission();    // stop transmitting
+    break;
+    case 3: //disminuye el valor lateral
+      Wire.write("CD");
+      Wire.endTransmission();    // stop transmitting
+    break;
+    default:
+    break;
+    }
+  }
+  void  leerTransmisor(){
+  //Serial.println("Entro en la recepcion de datos");
+  Wire.requestFrom(2, 1);    // request 6 bytes from slave device #2
+  nDato = 0;
+  while (Wire.available()) {
+    //Serial.println("----------------------------------------------------------------");
+    d = Wire.read();
+    //Serial.println(int(d));
+  }
+  //Serial.println("----------------------------------------------------------------");
+  Wire.requestFrom(2,int(d));         
+  strcpy(cadena, "");
+  String cadenas= "";
+  while (Wire.available()) { // slave may send less than requested
+    char c = Wire.read(); // receive a byte as character
+    cadena[nDato] = c;
+    cadenas =cadenas + c; 
+    Serial.print(cadena[nDato]); 
+    nDato++;       
+    }
+    Serial.println(cadenas);
+    Serial.println(" ");
+}
+  void activarCuerpos(int cuerpos){
+    cuerpo = cuerpos;
+    Wire.beginTransmission(1); // transmit to devi        
+    Wire.write("cuerpos");
+    switch (cuerpos) {
+    case 1:
+      Wire.write(cuerpos);              // sends one byte
+      Wire.endTransmission();    // stop transmitting
+    break;
+    case 2:
+      Wire.write(cuerpos);              // sends one byte
+      Wire.endTransmission();    // stop transmitting    
+    break;
+    case 3:
+      Wire.write(cuerpos);              // sends one byte
+      Wire.endTransmission();    // stop transmitting    
+    break;
+    case 4:
+      Wire.write(cuerpos);              // sends one byte
+      Wire.endTransmission();    // stop transmitting    
+    break;
+    case 5:
+      Wire.write(cuerpos);              // sends one byte
+      Wire.endTransmission();    // stop transmitting    
+    break;
+    case 6:
+      Wire.write(cuerpos);              // sends one byte
+      Wire.endTransmission();    // stop transmitting    
+    break;
+    default:
+    break;   
+    }        
+  }
 };

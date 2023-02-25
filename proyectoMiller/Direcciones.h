@@ -6,18 +6,18 @@ class Direcciones{
     /*1*/ {1,0,0,0},  //LK1
     /*2*/ {0,1,0,0},  //LK2
     /*3*/ {1,1,0,0},  //LK3
-    /*4*/ {0,0,1,0},  //LK4
+    /*4*/ {0,0,1,0},  //LK4 Seleccionar cuerpos
     /*5*/ {1,0,1,0},  //LK5
     /*6*/ {0,1,1,0},  //LK6 Trabajo/Memoria
     /*7*/ {1,1,1,0},  //LK7
-    /*8*/ {0,0,0,1},  //LK8
-    /*9*/ {1,0,0,1},  //LK9
-    /*10*/{0,1,0,1}, //LK10
-    /*11*/{1,1,0,1}, //LK11
-    /*12*/{0,0,1,1}, //LK12
-    /*13*/{1,0,1,1}, //LK13
-    /*14*/{0,1,1,1}, //LK14
-    /*15*/{1,1,1,1}  //LK15
+    /*8*/ {0,0,0,1},  //LK8 cuerpos de tinteros
+    /*9*/ {1,0,0,1},  //LK9 cuerpos de tinteros
+    /*10*/{0,1,0,1}, //LK10 cuerpos de tinteros
+    /*11*/{1,1,0,1}, //LK11 cuerpos de tinteros
+    /*12*/{0,0,1,1}, //LK12 cuerpos de tinteros
+    /*13*/{1,0,1,1}, //LK13 cuerpos de tinteros
+    /*14*/{0,1,1,1}, //LK14 cuerpos de tinteros
+    /*15*/{1,1,1,1}  //LK15 cuerpos de tinteros
   };
   // Direcciones de las placas de control
   const byte Dir0 = 33;//direccion 1
