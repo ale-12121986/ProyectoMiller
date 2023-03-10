@@ -1,3 +1,4 @@
+#include "HardwareSerial.h"
 #include "Arduino.h"
 class Cuerpo{
   private:
@@ -29,6 +30,7 @@ class Cuerpo{
         digitalWrite(cuerpo6, HIGH);
         break;            
       case 1: //Se activo el cuerpo 1
+        Serial.println("entro cuerpo 1");
         digitalWrite(cuerpo1, LOW);
         digitalWrite(cuerpo2, HIGH);
         digitalWrite(cuerpo3, HIGH);
@@ -37,6 +39,7 @@ class Cuerpo{
         digitalWrite(cuerpo6, HIGH);
       break;
       case 2: //Se activo el cuerpo 2
+        Serial.println("entro cuerpo 2");
         digitalWrite(cuerpo1, HIGH);
         digitalWrite(cuerpo2, LOW);
         digitalWrite(cuerpo3, HIGH);
@@ -45,6 +48,7 @@ class Cuerpo{
         digitalWrite(cuerpo6, HIGH);
       break;
       case 3: //Se activo el cuerpo 3
+        Serial.println("entro cuerpo 3");
         digitalWrite(cuerpo1, HIGH);
         digitalWrite(cuerpo2, HIGH);
         digitalWrite(cuerpo3, LOW);
@@ -53,6 +57,7 @@ class Cuerpo{
         digitalWrite(cuerpo6, HIGH);
       break;
       case 4: //Se activo el cuerpo 4
+        Serial.println("entro cuerpo 4");
         digitalWrite(cuerpo1, HIGH);
         digitalWrite(cuerpo2, HIGH);
         digitalWrite(cuerpo3, HIGH);
@@ -61,6 +66,7 @@ class Cuerpo{
         digitalWrite(cuerpo6, HIGH);
       break;
       case 5: //Se activo el cuerpo 5
+        Serial.println("entro cuerpo 5");
         digitalWrite(cuerpo1, HIGH);
         digitalWrite(cuerpo2, HIGH);
         digitalWrite(cuerpo3, HIGH);
@@ -69,13 +75,13 @@ class Cuerpo{
         digitalWrite(cuerpo6, HIGH);
       break;
         case 6: //Se activo el cuerpo 6
+        Serial.println("entro cuerpo 1");
         digitalWrite(cuerpo1, HIGH);
         digitalWrite(cuerpo2, HIGH);
         digitalWrite(cuerpo3, HIGH);
         digitalWrite(cuerpo4, HIGH);
         digitalWrite(cuerpo5, HIGH);
-        digitalWrite(cuerpo6, LOW
-        );
+        digitalWrite(cuerpo6, LOW);
       break;
       default:
       break;

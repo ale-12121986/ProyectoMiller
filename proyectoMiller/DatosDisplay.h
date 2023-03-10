@@ -32,6 +32,7 @@ class DatosDisplay{
     int N = 4;
     int displayUnidad[4] = {u1, u2, u3, u4};
     int displayDecena[4] = {d1, d2, d3, d4};
+    
     void selecDisplay(int pines){ // configura los pines para seleccionar que display se va a escribir
       switch (pines) {
         case 1:
@@ -84,8 +85,15 @@ class DatosDisplay{
     imprimirDisplay(unidad, decena);
     delay(1);
     digitalWrite(habilitarDisplay, HIGH);
-    delay(10);
+    delay(1);
     digitalWrite(habilitarDisplay, LOW);
   }
-
+  void enviarDatoRegistro(int unidad, int decena, int negativo, int centena){
+    digitalWrite(habilitarDisplay, HIGH);    
+    selecDisplay(2);
+    imprimirDisplay(negativo,centena);
+    selecDisplay(1);
+    imprimirDisplay(unidad, decena);
+    digitalWrite(habilitarDisplay, LOW);
+  }  
 };

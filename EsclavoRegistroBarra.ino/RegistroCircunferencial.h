@@ -15,6 +15,7 @@ class RegistroCircunferencial{
   int cuerpos = 1;
   int dato;
 
+  
   public:
   void configurar(){
     pinMode(registro1, INPUT);
@@ -95,6 +96,7 @@ class RegistroCircunferencial{
     cuerpos = cuerpo;   
   }
   void centrarRegistro(){
+    Serial.println("entro en centrar");        
     bool centrar =false;
     int dato = 0;
     while (centrar == false) {

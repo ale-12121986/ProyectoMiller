@@ -3,8 +3,8 @@ class Direcciones{
   private:
   const int dirComandos[16][4] = {
     /*0*/ {0,0,0,0},  //LK0
-    /*1*/ {1,0,0,0},  //LK1
-    /*2*/ {0,1,0,0},  //LK2
+    /*1*/ {1,0,0,0},  //LK1 
+    /*2*/ {0,1,0,0},  //LK2 registro circunferencial
     /*3*/ {1,1,0,0},  //LK3
     /*4*/ {0,0,1,0},  //LK4 Seleccionar cuerpos
     /*5*/ {1,0,1,0},  //LK5

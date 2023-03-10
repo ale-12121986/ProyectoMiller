@@ -32,14 +32,14 @@ class ControlClavija{
 /*6 5*/  {{0,0,0,0,0,1,1},{0,1,0,0,0,1,1},{1,0,0,0,0,1,1},{1,1,0,0,0,1,1},{0,0,1,0,0,1,1},{0,1,1,0,0,1,1},{1,0,1,0,0,1,1},{1,1,1,0,0,1,1},{0,0,0,1,0,1,1},{0,1,0,1,0,1,1},{1,0,0,1,0,1,1},{1,1,0,1,0,1,1},{0,0,1,1,0,1,1},{0,1,1,1,0,1,1},{1,0,1,1,0,1,1}},
 };
   void imprimirDirClavija(int cuerpo, int placa){
-    Serial.print("cuerpo: ");
-    Serial.println(cuerpo);
-    Serial.print("placa: ");
-    Serial.println(placa); 
-    Serial.println(" ");    
+    // Serial.print("cuerpo: ");
+    // Serial.println(cuerpo);
+    // Serial.print("placa: ");
+    // Serial.println(placa); 
+    // Serial.println(" ");    
     for (int i=0; i<N; i++){
       digitalWrite(dirclavijas[i], clavijas[cuerpo-1][placa][i]);
-      Serial.println(clavijas[cuerpo-1][placa][i]);     
+      //Serial.println(clavijas[cuerpo-1][placa][i]);     
     }
     delay(1);
   }
@@ -56,8 +56,7 @@ class ControlClavija{
     pinMode(b, OUTPUT);
     pinMode(c, OUTPUT);
     pinMode(d, OUTPUT);
-    pinMode(e, OUTPUT);
-    
+    pinMode(e, OUTPUT);  
     pinMode(f, OUTPUT);
     pinMode(g, OUTPUT);
   }

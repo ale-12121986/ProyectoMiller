@@ -2,12 +2,10 @@
 #include "RegistroCircunferencial.h"
 #include "RegistroLateral.h"
 #include <Wire.h>
+#include "WString.h"
 byte nDato = 0;
-char cadena[20];
-String prueba;
-char cuerpoUsado[] = "CUERPO";
-char registroC[] = "cir";
-char registroL[] = "lat"; 
+char cadena[4];
+String prueba; 
 char leerTransmisorCircunferencial[] = "TransmisorC";
 char leerTransmisorLateral[] = "TransmisorL"; 
 char dato = 0;
@@ -34,38 +32,39 @@ void requestEvent() {
     }    
     int valor = valorTransmisor;
     variable2 = String(valor);
-    //Serial.println(valorTransmisor);  
+    Serial.println(valorTransmisor);  
     Wire.write(int(variable2.length())); // respond with message of 6 bytes para que funcione tiene q enviar un dato int con la guncion write
-    //Serial.println(variable2.length());
+    Serial.println(variable2.length());
   }  
 
   // as expected by master
   //Serial.println("Dato enviado");
   }
-void recibeDato(int datos){
-  //Serial.println("entro en sub rutina");
+void recibeDato(int howMany){
+  Serial.println("entro en sub rutina");
   nDato = 0;
   strcpy(dato, "");
   strcpy(cadena, "");
-  while (Wire.available()) {
+  while (1 < Wire.available()) {
     dato = Wire.read();
+    //Serial.print(dato);
     cadena[nDato] = dato;
-    //Serial.print(cadena[nDato]);
     nDato++;
-    if(strcmp(cadena,cuerpoUsado) == 0) {        
+    if(strcmp(cadena,"Cue") == 0){        
       prueba = "CUERPO";
     } 
-    if(strcmp(cadena,registroC) == 0){
-      prueba = "REGCIRCUNFERENCIAL";
+    if(strcmp(cadena,"cir") == 0){
+      prueba = "REGC";
     }
-    if(strcmp(cadena,registroL) == 0){
-      prueba = "REGLATERAL";
+    if(strcmp(cadena,"lat") == 0){
+      prueba = "REGL";
     }
   }
-  strcpy(cadena, "");
-  cuerpo = int(cadena[nDato-1]);
-  Serial.println(prueba);
-  //Serial.println(cuerpo); 
+  //strcpy(cadena, "");
+  //cuerpo = int(cadena[nDato-1]);
+  cuerpo = Wire.read();
+  Serial.println(cadena);
+  Serial.println(cuerpo); 
   bandera = true;
 }
 void setup() {
@@ -87,12 +86,12 @@ void loop() {
   // put your main code here, to run repeatedly:
   if (bandera) {
     if (prueba.equals("CUERPO")) {
-      //Serial.println("entro en cambios de cuerpos");
+      Serial.println("entro en cambios de cuerpos");
       delay(5);
       bandera = false;
       claseCuerpo.seleccionarCuerpo(cuerpo);
     }
-    if (prueba.equals("REGCIRCUNFERENCIAL")) {
+    if (prueba.equals("REGC")) {
       Serial.println("entro en registro circunferencial"); 
       acRegCir = true;
       acRegLat = false;
@@ -100,7 +99,7 @@ void loop() {
       registroCircunferencial.cuerpo(cuerpo);
       registroCircunferencial.moverRegistro(cuerpo);
     }
-    if (prueba.equals("REGLATERAL")) {
+    if (prueba.equals("REGL")) {
       Serial.println("entro en registro lateral");
       acRegCir = false;      
       acRegLat = true;

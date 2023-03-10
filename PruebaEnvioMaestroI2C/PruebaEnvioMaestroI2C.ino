@@ -9,7 +9,7 @@ const byte Boton8 = 7;
 const byte Boton4 = 8;
 const byte Boton3 = 9;
 char d = 0;
-char datoRecibido[4];
+char datoRecibido[3];
 int registroLateral = 0, registroCircunferencial = 0, registroTintero = 0;
 byte nDato = 0;
 char cadena[20];
@@ -17,15 +17,15 @@ String cadena2 = "";
 int cuerpo = 0;
 int valorTransmisor; 
 void  leerTransmisor(){
-  //Serial.println("Entro en la recepcion de datos");
+  Serial.println("Entro en la recepcion de datos");
   Wire.requestFrom(2, 1);    // request 6 bytes from slave device #2
   nDato = 0;
   while (Wire.available()) {
-    //Serial.println("----------------------------------------------------------------");
+    Serial.println("----------------------------------------------------------------");
     d = Wire.read();
-    //Serial.println(int(d));
+    Serial.println(int(d));
   }
-  //Serial.println("----------------------------------------------------------------");
+  Serial.println("----------------------------------------------------------------");
   Wire.requestFrom(2,int(d));         
   cadena2 ="";
   while (Wire.available()) { // slave may send less than requested
@@ -87,12 +87,15 @@ void moverRegistroCircunferencial(int valor){
   }
 }
 void activarCuerpos(int cuerpos){
+    
   cuerpo = cuerpos;
   Wire.beginTransmission(2); // transmit to devi        
-  Wire.write("CUERPO");  
+  Wire.write("Cue");
+  //Wire .endTransmission();
+  //Wire.beginTransmission(2);   
   switch (cuerpos) {
   case 1:
-    Wire.write(cuerpos);              // sends one byte
+    Wire.write(cuerpos);  // sends one byte
     Wire.endTransmission();    // stop transmitting
   break;
   case 2:
@@ -139,7 +142,7 @@ void loop() {
     } 
     cuerpo++;
     if (cuerpo == 7) {
-    cuerpo = 1;
+      cuerpo = 1;
     }
     Serial.println("Se activan los cuerpos");
     Serial.print(cuerpo);

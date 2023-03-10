@@ -21,10 +21,11 @@ class Registro{
   void setEnviarDato(int dato){
 
   }
+
   void moverRegistroLateral(int valor){
-    Wire.beginTransmission(1); // transmit to devi 
-    Wire.write("lateral");
-    registroDeLectura = "lateral";
+    Wire.beginTransmission(2); // transmit to devi 
+    Wire.write("lat");
+    registroDeLectura = "lat";
     switch (valor) {
     case 1: //centra el valor lateral
       Wire.write("LC");
@@ -43,9 +44,9 @@ class Registro{
     }          
   }
   void moverRegistroCircunferencial(int valor){
-    Wire.beginTransmission(1); // transmit to devi
-    Wire.write("circunferencial");
-    registroDeLectura = "circunferencial";
+    Wire.beginTransmission(2); // transmit to devi
+    Wire.write("cir");
+    registroDeLectura = "cir";
     switch (valor) {
     case 1: //centra el valor lateral
       Wire.write("CC");
@@ -63,7 +64,7 @@ class Registro{
     break;
     }
   }
-  void  leerTransmisor(){
+  String  leerTransmisor(){
   //Serial.println("Entro en la recepcion de datos");
   Wire.requestFrom(2, 1);    // request 6 bytes from slave device #2
   nDato = 0;
@@ -80,38 +81,47 @@ class Registro{
     char c = Wire.read(); // receive a byte as character
     cadena[nDato] = c;
     cadenas =cadenas + c; 
-    Serial.print(cadena[nDato]); 
+    //Serial.print(cadena[nDato]); 
     nDato++;       
     }
     Serial.println(cadenas);
     Serial.println(" ");
+    return cadenas;
 }
   void activarCuerpos(int cuerpos){
+    //Serial.print("envia por i2c");
     cuerpo = cuerpos;
-    Wire.beginTransmission(1); // transmit to devi        
-    Wire.write("cuerpos");
+    Wire.beginTransmission(2); // transmit to devi        
+    Wire.write("Cue");
+    //Wire.endTransmission();
     switch (cuerpos) {
     case 1:
+      //Wire.beginTransmission(2); // transmit to devi 
       Wire.write(cuerpos);              // sends one byte
       Wire.endTransmission();    // stop transmitting
     break;
     case 2:
+      //Wire.beginTransmission(2); // transmit to devi 
       Wire.write(cuerpos);              // sends one byte
       Wire.endTransmission();    // stop transmitting    
     break;
     case 3:
+    //Wire.beginTransmission(2); // transmit to devi 
       Wire.write(cuerpos);              // sends one byte
       Wire.endTransmission();    // stop transmitting    
     break;
     case 4:
+    //Wire.beginTransmission(2); // transmit to devi 
       Wire.write(cuerpos);              // sends one byte
       Wire.endTransmission();    // stop transmitting    
     break;
     case 5:
+    //Wire.beginTransmission(2); // transmit to devi 
       Wire.write(cuerpos);              // sends one byte
       Wire.endTransmission();    // stop transmitting    
     break;
     case 6:
+    //Wire.beginTransmission(2); // transmit to devi 
       Wire.write(cuerpos);              // sends one byte
       Wire.endTransmission();    // stop transmitting    
     break;
