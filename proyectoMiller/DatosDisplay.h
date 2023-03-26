@@ -74,7 +74,8 @@ class DatosDisplay{
     pinMode(dis2, OUTPUT);
     //DDRA=B11111111;
     for (int i=0; i<N; i++){
-      pinMode(displayUnidad[i], OUTPUT);
+      pinMode(di
+      splayUnidad[i], OUTPUT);
       pinMode(displayDecena[i], OUTPUT);
       digitalWrite(displayUnidad[i], LOW);//apagar
       digitalWrite(displayDecena[i], LOW);//apagar
