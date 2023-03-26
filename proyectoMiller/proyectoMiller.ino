@@ -25,7 +25,6 @@ const byte Boton8 = 7;  // 2
 const int pot = A2;
 const int pot2 = A1;
 int Centena, Decena, Unidad; 
-String cadenas="";
 //Se llama las clases
 DatosDisplay datosDisplay;
 ControlClavija controlarClavija;
@@ -42,7 +41,7 @@ int ejecucionDeClavija(int posicion){
   return valor1;
 }
 
-void leerDato (float Valor){  
+void leerDato (float Valor){
   float valor;
   valor= (Valor*1000)/1024;
   Centena = valor/100;
@@ -55,31 +54,7 @@ void leerDato (float Valor){
   Serial.print("Unidad: ");
   Serial.println(Unidad);
 }
-void ejecucionRegistro(String posicion){
-  float valor = posicion.toFloat();  
-  int negativo = 0;
-  valor = map(valor, 0, 1024, -500, 500);
-  Centena = valor/100;
-  Decena = valor/10;
-  Decena = (valor - Centena*100)/10;
-  Unidad = (valor - Centena*100 - Decena*10);
-  if (Centena < 0) {
-    negativo = 8;
-    Centena = Centena*-1;
-    Decena = Decena *-1;
-    Unidad = Unidad *-1;    
-  }
-  Serial.print("Valor: ");
-  Serial.println(valor);
-  Serial.print("Centena: ");
-  Serial.println(Centena);
-  Serial.print("Decena: ");
-  Serial.println(Decena);
-  Serial.print("Unidad: ");
-  Serial.println(Unidad);
-  //Centena = 0;  
-  datosDisplay.enviarDatoRegistro(Unidad, Decena, Centena, negativo);
-}
+
 void barridoCuerpo(int cuerpos){  //barre todos los cuerpos de las calvija e imprime todos los datos en los display
   //controlarClavija.posInicial();
   int i=1;
@@ -88,17 +63,17 @@ void barridoCuerpo(int cuerpos){  //barre todos los cuerpos de las calvija e imp
     Serial.print("leyendo clavija");
     Serial.println(i); 
     controlarClavija.leerPotIzquierdo(cuerpos, i);
-    retardo50ms();
+    retardo100ms();
     leerPotenciometro = ejecucionDeClavija(4);  //va a la rutina de escribir en los display y trae el valor del potenciometro
     controlarClavija.leerPotderecho(cuerpos, i);
-    retardo50ms();
+    retardo100ms();
     i++;
     leerPotenciometro = ejecucionDeClavija(3);
     controlarClavija.leerPotIzquierdo(cuerpos, i);
-    retardo50ms();
+    retardo100ms();
     leerPotenciometro = ejecucionDeClavija(2);
     controlarClavija.leerPotderecho(cuerpos, i);
-    retardo50ms();
+    retardo100ms();
     leerPotenciometro = ejecucionDeClavija(1);
     i++;
   }while (i<=14);      
@@ -503,40 +478,30 @@ void loop() {
   if (digitalRead(Boton6) == HIGH || digitalRead(Boton7) == HIGH) {
     goto Inicio;
   }
-  Serial.println("}Entro en registro corcunferencial");
-  registroCincunferencial:    
-  direccionControl.imprimirDireccion(2);  //Diereccion para registro circunferencial
-  
-  if(digitalRead(Boton5) == LOW){  //incrementar
+  direccionControl.imprimirDireccion(3);  //Diereccion para registro circunferencial
+
+  if(digitalRead(Boton1) == HIGH){  //incrementar
     Serial.println("Se activa el Registro circunferencial mas");
     registro.moverRegistroCircunferencial(2);
-    while(digitalRead(Boton5) == LOW){
-      retardo50ms();
-      cadenas = registro.leerTransmisor();
-      ejecucionRegistro(cadenas);      
+    while(digitalRead(Boton1) == HIGH){
+      registro.leerTransmisor();
     }
   }
-  if(digitalRead(Boton1) == LOW){  //decrementar
+  if(digitalRead(Boton2) == HIGH){  //decrementar
     Serial.println("Se activa el registro circunferencial menos");
     registro.moverRegistroCircunferencial(3);
-    while(digitalRead(Boton1) == LOW){
-      retardo50ms();
-      cadenas = registro.leerTransmisor();
-      ejecucionRegistro(cadenas);
+    while(digitalRead(Boton2) == HIGH){
+      registro.leerTransmisor();
     }
   }
-  if(digitalRead(Boton8) == LOW){  //centrar
+  if(digitalRead(Boton3) == HIGH){  //centrar
     Serial.println("Se activa el registro circunferencial centrar");
     registro.moverRegistroCircunferencial(0);
-    while(digitalRead(Boton8) == LOW){
-      retardo50ms();      
-      cadenas = registro.leerTransmisor();
-      ejecucionRegistro(cadenas);
+    while(digitalRead(Boton3) == HIGH){
+      registro.leerTransmisor();
     }
-  } 
-goto registroCincunferencial;
-     
-  //goto trabajoCuerpo;
+  }  
+  goto trabajoCuerpo;
   Memoria:
   memoria = true; 
   guardarMemoria(cuerpos);

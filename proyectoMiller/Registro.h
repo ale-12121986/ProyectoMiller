@@ -24,8 +24,8 @@ class Registro{
 
   void moverRegistroLateral(int valor){
     Wire.beginTransmission(2); // transmit to devi 
-    Wire.write("lat");
-    registroDeLectura = "lat";
+    Wire.write("lateral");
+    registroDeLectura = "lateral";
     switch (valor) {
     case 1: //centra el valor lateral
       Wire.write("LC");
@@ -45,8 +45,8 @@ class Registro{
   }
   void moverRegistroCircunferencial(int valor){
     Wire.beginTransmission(2); // transmit to devi
-    Wire.write("cir");
-    registroDeLectura = "cir";
+    Wire.write("circunferencial");
+    registroDeLectura = "circunferencial";
     switch (valor) {
     case 1: //centra el valor lateral
       Wire.write("CC");
@@ -64,7 +64,7 @@ class Registro{
     break;
     }
   }
-  String  leerTransmisor(){
+  void  leerTransmisor(){
   //Serial.println("Entro en la recepcion de datos");
   Wire.requestFrom(2, 1);    // request 6 bytes from slave device #2
   nDato = 0;
@@ -81,18 +81,17 @@ class Registro{
     char c = Wire.read(); // receive a byte as character
     cadena[nDato] = c;
     cadenas =cadenas + c; 
-    //Serial.print(cadena[nDato]); 
+    Serial.print(cadena[nDato]); 
     nDato++;       
     }
     Serial.println(cadenas);
     Serial.println(" ");
-    return cadenas;
 }
   void activarCuerpos(int cuerpos){
     //Serial.print("envia por i2c");
     cuerpo = cuerpos;
     Wire.beginTransmission(2); // transmit to devi        
-    Wire.write("Cue");
+    Wire.write("CUE");
     //Wire.endTransmission();
     switch (cuerpos) {
     case 1:
