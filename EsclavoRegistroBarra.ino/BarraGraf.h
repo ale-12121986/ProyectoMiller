@@ -23,7 +23,7 @@ class BarraGraf{
     const byte dir3 = 40;
     const byte dir4 = 41;
     const byte dir5 = 42;
-    const byte dir6 = 43
+    const byte dir6 = 43;
     const byte clock1 = 44;
     const byte clock2 = 45;
     const byte clock3 = 46;
@@ -85,7 +85,7 @@ class BarraGraf{
   void configurar(){
     for (int i = 0; i<16; i++){
       pinMode(datos[i], OUTPUT);
-      digitalWrite(datoBajo[i], LOW);
+      digitalWrite(datos[i], LOW);
     }      
     for (int i = 0; i<6; i++){    
       pinMode(direccion[i], OUTPUT);
@@ -105,18 +105,18 @@ class BarraGraf{
   }
     
   void imprimir(int valor){
-    if(valo < 51){
+    if(valor < 51){
       digitalWrite(clocks[0], HIGH);
-      for (i = 0; i < 18; i++) {
-        digitalWrite(datos[i], valortintero[puerto][i]);
+      for (int i = 0; i < 18; i++) {
+        digitalWrite(datos[i], valortintero[valor][i]);
       }            
       digitalWrite(clocks[0], LOW);
     }
     else if(valor > 51 && valor < 100){
       valor = valor - 50;
       digitalWrite(clocks[1], HIGH);
-      for (i = 0; i < 18; i++) {
-        digitalWrite(datos[i], valortintero[puerto][i]);
+      for (int i = 0; i < 18; i++) {
+        digitalWrite(datos[i], valortintero[valor][i]);
       }            
       digitalWrite(clocks[1], LOW);
     }

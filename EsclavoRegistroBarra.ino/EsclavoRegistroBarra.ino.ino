@@ -1,6 +1,7 @@
 #include "Cuerpo.h"
 #include "RegistroCircunferencial.h"
 #include "RegistroLateral.h"
+#include "BarraGraf.h"
 #include <Wire.h>
 #include "WString.h"
 byte nDato = 0;
@@ -17,6 +18,7 @@ bool acRegCir = false, acRegLat = false;
 Cuerpo claseCuerpo;
 RegistroCircunferencial registroCircunferencial;
 RegistroLateral registroLateral;
+BarraGraf barraGRaf;
 void requestEvent() {
   contador++;
   if (contador == 2) {
@@ -59,6 +61,12 @@ void recibeDato(int howMany){
     if(strcmp(cadena,"lat") == 0){
       prueba = "REGL";
     }
+    if(strcmp(cadena,"bgf") == 0){
+      prueba = "BGF";
+    }
+    if(strcmp(cadena,"bgv") == 0){
+      prueba = "BGV";
+    }
   }
   //strcpy(cadena, "");
   //cuerpo = int(cadena[nDato-1]);
@@ -72,6 +80,7 @@ void setup() {
   claseCuerpo.configurar();
   registroCircunferencial.configurar();
   registroLateral.configurar();
+  barraGRaf.configurar();
   Serial.begin(115200);
   Wire.begin(2);
   Wire.onReceive(recibeDato);
@@ -96,7 +105,7 @@ void loop() {
       acRegCir = true;
       acRegLat = false;
       bandera = false;
-      registroCircunferencial.cuerpo(cuerpo);
+      //registroCircunferencial.cuerpo(cuerpo);
       registroCircunferencial.moverRegistro(cuerpo);
     }
     if (prueba.equals("REGL")) {
@@ -105,9 +114,18 @@ void loop() {
       acRegLat = true;
       bandera = false;
       //registroLateral
-      registroLateral.cuerpo(cuerpo);
+      //registroLateral.cuerpo(cuerpo);
       registroLateral.moverRegistro(cuerpo);
     }
+    if (prueba.equals("BGF")) {
+      Serial.println("entro en la dir de barra");
+      barraGRaf.direccionar(cuerpo);
+    }
+    if(prueba.equals("BGV")){
+      Serial.println("entro en elcuerpo de barra");
+      barraGRaf.imprimir(cuerpo);
+    }    
+    
     prueba = "";
   }  
 }

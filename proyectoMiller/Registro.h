@@ -24,19 +24,22 @@ class Registro{
 
   void moverRegistroLateral(int valor){
     Wire.beginTransmission(2); // transmit to devi 
-    Wire.write("lateral");
+    Wire.write("lat");
     registroDeLectura = "lateral";
     switch (valor) {
+    case 0: //detiene el valor lateral
+      Wire.write(0);
+      Wire.endTransmission();    // stop transmitting  
     case 1: //centra el valor lateral
-      Wire.write("LC");
+      Wire.write(1);
       Wire.endTransmission();    // stop transmitting
     break;
     case 2: //incrementa el valor lateral
-      Wire.write("LI");
+      Wire.write(2);
       Wire.endTransmission();    // stop transmitting
     break;
     case 3: //disminuye el valor lateral
-      Wire.write("LD");
+      Wire.write(3);
       Wire.endTransmission();    // stop transmitting
     break;
     default:
@@ -45,19 +48,22 @@ class Registro{
   }
   void moverRegistroCircunferencial(int valor){
     Wire.beginTransmission(2); // transmit to devi
-    Wire.write("circunferencial");
+    Wire.write("cir");
     registroDeLectura = "circunferencial";
     switch (valor) {
+    case 0: //detiene el valor lateral
+      Wire.write(0);
+      Wire.endTransmission();    // stop transmitting  
     case 1: //centra el valor lateral
-      Wire.write("CC");
+      Wire.write(1);
       Wire.endTransmission();    // stop transmitting
     break;
     case 2: //incrementa el valor lateral
-      Wire.write("CI");
+      Wire.write(2);
       Wire.endTransmission();    // stop transmitting
     break;
     case 3: //disminuye el valor lateral
-      Wire.write("CD");
+      Wire.write(3);
       Wire.endTransmission();    // stop transmitting
     break;
     default:
@@ -127,5 +133,19 @@ class Registro{
     default:
     break;   
     }        
+  }
+  void DireccionBarra(int direccion){
+      Wire.beginTransmission(2); // transmit to devi        
+      Wire.write("bgf");   
+      delayMicroseconds(5);
+      Wire.write(direccion);              // sends one byte
+      Wire.endTransmission();
+    }
+  void ValorBarra(int valor){
+    Wire.beginTransmission(2); // transmit to devi        
+      Wire.write("bgv");   
+      delayMicroseconds(5);
+      Wire.write(valor);              // sends one byte
+      Wire.endTransmission();
   }
 };
