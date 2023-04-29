@@ -75,7 +75,7 @@ class Cuerpo{
         digitalWrite(cuerpo6, HIGH);
       break;
         case 6: //Se activo el cuerpo 6
-        Serial.println("entro cuerpo 1");
+        Serial.println("entro cuerpo 6");
         digitalWrite(cuerpo1, HIGH);
         digitalWrite(cuerpo2, HIGH);
         digitalWrite(cuerpo3, HIGH);

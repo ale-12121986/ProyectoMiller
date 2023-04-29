@@ -524,58 +524,58 @@ void loop() {
   if (digitalRead(Boton6) == HIGH || digitalRead(Boton7) == HIGH) {
     goto Inicio;
   }
-  direccionControl.imprimirDireccion(3);  //Diereccion para registro circunferencial
-
-  if(digitalRead(Boton1) == HIGH){  //incrementar
+  direccionControl.imprimirDireccion(2);  //Diereccion para registro circunferencial
+  //Serial.println("registro cir");
+  if(digitalRead(Boton1) == LOW){  //incrementar
     Serial.println("Se activa el Registro circunferencial mas");
     registro.moverRegistroCircunferencial(2);
-    while(digitalRead(Boton1) == HIGH){
+    while(digitalRead(Boton1) == LOW){
       registro.leerTransmisor();
     }
     registro.moverRegistroCircunferencial(0);
   }
-  if(digitalRead(Boton2) == HIGH){  //decrementar
+  if(digitalRead(Boton5) == LOW){  //decrementar
     Serial.println("Se activa el registro circunferencial menos");
     registro.moverRegistroCircunferencial(3);
-    while(digitalRead(Boton2) == HIGH){
+    while(digitalRead(Boton5) == LOW){
       registro.leerTransmisor();
     }
     registro.moverRegistroCircunferencial(0);
   }
-  if(digitalRead(Boton3) == HIGH){  //centrar
+  if(digitalRead(Boton8) == LOW){  //centrar
     Serial.println("Se activa el registro circunferencial centrar");
     registro.moverRegistroCircunferencial(1);
-    while(digitalRead(Boton3) == HIGH){
+    while(digitalRead(Boton8) == LOW){
       registro.leerTransmisor();
     }
     registro.moverRegistroCircunferencial(0);
   }
-  direccionControl.imprimirDireccion(4);  //Diereccion para registro lateral
+  // direccionControl.imprimirDireccion(3);  //Diereccion para registro lateral
   
-  if(digitalRead(Boton1) == HIGH){  //incrementar
-    Serial.println("Se activa el Registro lateral mas");
-    registro.moverRegistroLateral(2);
-    while(digitalRead(Boton1) == HIGH){
-      registro.leerTransmisor();
-    }
-    registro.moverRegistroLateral(0);
-  }
-  if(digitalRead(Boton2) == HIGH){  //decrementar
-    Serial.println("Se activa el registro circunferencial menos");
-    registro.moverRegistroLateral(3);
-    while(digitalRead(Boton2) == HIGH){
-      registro.leerTransmisor();
-    }
-    registro.moverRegistroLateral(0);
-  }
-  if(digitalRead(Boton3) == HIGH){  //centrar
-    Serial.println("Se activa el registro circunferencial centrar");
-    registro.moverRegistroLateral(1);
-    while(digitalRead(Boton3) == HIGH){
-      registro.leerTransmisor();
-    }
-    registro.moverRegistroLateral(0);
-  }
+  // if(digitalRead(Boton1) == HIGH){  //incrementar
+  //   Serial.println("Se activa el Registro lateral mas");
+  //   registro.moverRegistroLateral(2);
+  //   while(digitalRead(Boton1) == HIGH){
+  //     registro.leerTransmisor();
+  //   }
+  //   registro.moverRegistroLateral(0);
+  // }
+  // if(digitalRead(Boton2) == HIGH){  //decrementar
+  //   Serial.println("Se activa el registro circunferencial menos");
+  //   registro.moverRegistroLateral(3);
+  //   while(digitalRead(Boton2) == HIGH){
+  //     registro.leerTransmisor();
+  //   }
+  //   registro.moverRegistroLateral(0);
+  // }
+  // if(digitalRead(Boton3) == HIGH){  //centrar
+  //   Serial.println("Se activa el registro circunferencial centrar");
+  //   registro.moverRegistroLateral(1);
+  //   while(digitalRead(Boton3) == HIGH){
+  //     registro.leerTransmisor();
+  //   }
+  //   registro.moverRegistroLateral(0);
+  // }
 
   goto trabajoCuerpo;
   Memoria:

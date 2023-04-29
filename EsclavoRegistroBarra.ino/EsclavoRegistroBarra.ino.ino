@@ -52,7 +52,8 @@ void recibeDato(int howMany){
     //Serial.print(dato);
     cadena[nDato] = dato;
     nDato++;
-    if(strcmp(cadena,"Cue") == 0){        
+    if(strcmp(cadena,"Cue") == 0){ 
+      Serial.print("entro");       
       prueba = "CUERPO";
     } 
     if(strcmp(cadena,"cir") == 0){

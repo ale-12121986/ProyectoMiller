@@ -96,8 +96,9 @@ class Registro{
   void activarCuerpos(int cuerpos){
     //Serial.print("envia por i2c");
     cuerpo = cuerpos;
+    
     Wire.beginTransmission(2); // transmit to devi        
-    Wire.write("CUE");
+    Wire.write("Cue");
     //Wire.endTransmission();
     switch (cuerpos) {
     case 1:
