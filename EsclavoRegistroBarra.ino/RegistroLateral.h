@@ -90,6 +90,7 @@ class RegistroLateral{
     cuerpos = cuerpo;   
   } 
   void centrarRegistro(){
+  
     bool centrar =false;
     int dato = 0;
     while (centrar == false) {
