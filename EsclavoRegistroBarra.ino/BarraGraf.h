@@ -27,17 +27,16 @@ class BarraGraf{
     const byte habilitarclock = 44;
     const byte enviarDatoBajo = 46;
     const byte enviarDatoAlto = 45;
-    boolean registroBajo = false, registroAlto= false;
     int datos[16] = {dato1, dato2, dato3, dato4, dato5, dato6, dato7, dato8, dato9, dato10, dato11, dato12, dato13, dato14, dato15, dato16};
     int direccionPuerto[6] = {dir1, dir2, dir3, dir4, dir5, dir6};
     //int clocks[3] ={clock0, clock1, clock2};
     const int datoDirecciones[29][6] ={
-      /* 0*/ {0,0,0,0,0,0},
-      /* 1*/ {1,0,0,0,0,0},
+      /* 0*/ {1,1,1,1,1,1},
+      /* 1*/ {0,1,1,1,1,1},
       /* 2*/ {1,0,1,1,1,1},
-      /* 3*/ {1,1,0,0,0,0},
-      /* 4*/ {0,0,1,0,0,0},
-      /* 5*/ {1,0,1,0,0,0},
+      /* 3*/ {0,0,1,1,1,1},
+      /* 4*/ {1,1,0,1,1,1},
+      /* 5*/ {0,1,0,1,1,1},
       /* 6*/ {1,0,0,1,1,1},
       /* 7*/ {0,0,0,1,1,1},
       /* 8*/ {1,1,1,0,1,1}, 
@@ -94,11 +93,8 @@ class BarraGraf{
       digitalWrite(direccionPuerto[i], HIGH);
     }
     pinMode(habilitarclock, OUTPUT);
-    //digitalWrite(habilitarclock, HIGH);
     pinMode(enviarDatoBajo, OUTPUT);
-    //digitalWrite(enviarDatoBajo, HIGH);
     pinMode(enviarDatoAlto, OUTPUT);
-    //digitalWrite(enviarDatoAlto, HIGH);
     digitalWrite(habilitarclock, LOW);
     digitalWrite(enviarDatoAlto, LOW);
     digitalWrite(enviarDatoBajo, LOW);
@@ -111,17 +107,13 @@ class BarraGraf{
         digitalWrite(direccionPuerto[i], datoDirecciones[valor][i]);
         Serial.print(datoDirecciones[valor][i]);
       }
-      //digitalWrite(habilitarclock, HIGH); //habilitador de clock
   }
     
   void imprimir(int valor){
     if(valor <= 50){
-      registroBajo = true;
-      registroAlto = false;
       y = map(valor, 0, 50, 0, 16);
       Serial.print("entro el primer grupo de leds y encendio: ");
       Serial.println(y);    
-      //digitalWrite(clocks[1], LOW); //escribir los primeros 16 bit
       for (int i = 0; i<16; i++) {
         digitalWrite(datos[i], valortintero[y][i]);
         Serial.print(valortintero[y][i]);
@@ -133,9 +125,8 @@ class BarraGraf{
         }
       }
     }
+    //prueba
     if(valor > 50 ){
-      registroAlto = true;
-      registroBajo = false;
       Serial.print("entro el segundo grupo de leds y encendio: ");
       valor = valor - 50;
       y = map(valor, 0, 50, 0, 16);
@@ -161,6 +152,5 @@ class BarraGraf{
     digitalWrite(habilitador, LOW);  //habilito el clock  
     digitalWrite(enviarDatoBajo, HIGH);
     digitalWrite(enviarDatoAlto, LOW);
-    //digitalWrite(habilitador, LOW);
   }
 };
