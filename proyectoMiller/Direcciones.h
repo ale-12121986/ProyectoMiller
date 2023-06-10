@@ -1,6 +1,7 @@
 #include "Arduino.h"
 class Direcciones{
   private:
+  int dir[4];
   const int dirComandos[16][4] = {
     /*0*/ {0,0,0,0},  //LK0
     /*1*/ {1,0,0,0},  //LK1
@@ -19,6 +20,7 @@ class Direcciones{
     /*14*/{0,1,1,1}, //LK14 cuerpos de tinteros
     /*15*/{1,1,1,1}  //LK15 cuerpos de tinteros
   };
+  
   // Direcciones de las placas de control
   const byte Dir0 = 33;//direccion 1
   const byte Dir1 = 34;//direccion 2
@@ -30,13 +32,21 @@ class Direcciones{
     void configurar(){
       for (int i=0; i<N; i++){
       pinMode(dirControl[i], OUTPUT);
-       
       }
-
     }
     void imprimirDireccion(int placas){
       for (int i=0; i<N; i++){
         digitalWrite(dirControl[i], dirComandos[placas][i] );
+        //Serial.print(dirComandos[placas][i]);
+        dir[i] = dirComandos[placas][i];
       }
     }
+    void imprimirLaDireccion(){
+      Serial.print("direccion de placa: ");
+      for (int i=0; i<N; i++){
+        Serial.print(dir[i]);
+      }
+      Serial.println("");
+    }
+
 };

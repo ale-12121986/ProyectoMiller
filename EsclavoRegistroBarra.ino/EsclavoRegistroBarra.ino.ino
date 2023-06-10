@@ -19,6 +19,7 @@ Cuerpo claseCuerpo;
 RegistroCircunferencial registroCircunferencial;
 RegistroLateral registroLateral;
 BarraGraf barraGRaf;
+
 void requestEvent() {
   contador++;
   if (contador == 2) {
@@ -41,9 +42,9 @@ void requestEvent() {
 
   // as expected by master
   //Serial.println("Dato enviado");
-  }
+}
 void recibeDato(int howMany){
-  Serial.println("entro en sub rutina");
+  //Serial.println("entro en sub rutina");
   nDato = 0;
   strcpy(dato, "");
   strcpy(cadena, "");
@@ -72,8 +73,8 @@ void recibeDato(int howMany){
   //strcpy(cadena, "");
   //cuerpo = int(cadena[nDato-1]);
   cuerpo = Wire.read();
-  Serial.println(cadena);
-  Serial.println(cuerpo); 
+  //Serial.println(cadena);
+  //Serial.println(cuerpo); 
   bandera = true;
 }
 void setup() {
@@ -87,7 +88,7 @@ void setup() {
   Wire.onReceive(recibeDato);
   Wire.onRequest(requestEvent); // register event
   claseCuerpo.seleccionarCuerpo(0);
-  Serial.println("Esclavo");
+  Serial.println( "Esclavo esclavo");
   registroCircunferencial.moverRegistro(0);
   registroLateral.moverRegistro(0);
   }
@@ -119,11 +120,13 @@ void loop() {
       registroLateral.moverRegistro(cuerpo);
     }
     if (prueba.equals("BGF")) {
-      Serial.println("entro en la dir de barra");
+      Serial.println("entro en la dir de barra ");
+      //Serial.print(cuerpo);
       barraGRaf.direccionar(cuerpo);
+      
     }
     if(prueba.equals("BGV")){
-      Serial.println("entro en elcuerpo de barra");
+      //Serial.println("entro en elcuerpo de barra");
       barraGRaf.imprimir(cuerpo);
     }    
     

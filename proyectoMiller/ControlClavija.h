@@ -39,7 +39,7 @@ class ControlClavija{
     // Serial.println(" ");    
     for (int i=0; i<N; i++){
       digitalWrite(dirclavijas[i], clavijas[cuerpo-1][placa][i]);
-      //Serial.println(clavijas[cuerpo-1][placa][i]);     
+      //Serial.print(clavijas[cuerpo-1][placa][i]);     
     }
     delay(1);
   }
@@ -81,7 +81,6 @@ class ControlClavija{
     imprimirDirClavija(cuerpo, placa);
     digitalWrite(h, HIGH);
     digitalWrite(j, LOW);
-   
     digitalWrite(i, LOW);
     digitalWrite(k, HIGH);
     digitalWrite(l, HIGH);
@@ -98,9 +97,7 @@ class ControlClavija{
     digitalWrite(k, LOW);
     digitalWrite(l, HIGH);
     delay(25);
-    digitalWrite(l, LOW);
-    
-    
+    digitalWrite(l, LOW);  
   }
   void motorDerechoMenos(int cuerpo ,int placa){
     imprimirDirClavija(cuerpo, placa);
@@ -111,9 +108,8 @@ class ControlClavija{
     digitalWrite(l, HIGH);
     delay(25);
     digitalWrite(l, LOW);
-    
-    
   }
+
   void resetflipflop(){
     digitalWrite(i, LOW);
     digitalWrite(k, LOW);

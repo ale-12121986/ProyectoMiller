@@ -12,14 +12,16 @@ class Iluminacion{
     const byte luz11 = 44;   //cuerpo6
     const byte luz12 = 45;   //cuerpo5
     const byte luz16 = 46;   //cuerpo2
-    int dirControlIluminacion[10] = {
+    const byte luz17 = 47;    //cambio de cuerpo ojo falta programar
+    const byte luz18 = 48;    //guardar en memoria ojo falta programar 
+    int dirControlIluminacion[12] = {
       luz2, luz3, luz4, luz5, luz6, luz7, luz8, luz11,
-      luz12, luz16
+      luz12, luz16 ,luz17 ,luz18
     };
   
   public:
   void configurar(){
-    for(int i=0; i<=9;i++){
+    for(int i=0; i<=11;i++){
       pinMode(dirControlIluminacion[i], OUTPUT);
       digitalWrite(dirControlIluminacion[i], LOW);
     }         
@@ -32,7 +34,9 @@ class Iluminacion{
         digitalWrite(luz3, HIGH);        
         digitalWrite(luz5, HIGH);
         digitalWrite(luz12, HIGH);
-        digitalWrite(luz11, HIGH);  
+        digitalWrite(luz11, HIGH); 
+        digitalWrite(luz17, HIGH);
+        digitalWrite(luz18, HIGH); 
       break;
       case 1: // enciede luz cuerpo 1
         digitalWrite(luz2, LOW);
@@ -81,6 +85,29 @@ class Iluminacion{
         digitalWrite(luz5, HIGH);
         digitalWrite(luz12, HIGH);
         digitalWrite(luz11, LOW);  
+        break;    
+         case 7: // enciede luz cambio de cuerpo
+        digitalWrite(luz2, HIGH);
+        digitalWrite(luz16, HIGH);
+        digitalWrite(luz3, HIGH);        
+        digitalWrite(luz5, HIGH);
+        digitalWrite(luz12, HIGH);
+        digitalWrite(luz11, HIGH);
+        digitalWrite(luz17, LOW);
+        digitalWrite(luz18, HIGH);  
+        break;    
+        case 8: // enciede luz guardar en memoria
+        digitalWrite(luz2, HIGH);
+        digitalWrite(luz16, HIGH);
+        digitalWrite(luz3, HIGH);        
+        digitalWrite(luz5, HIGH);
+        digitalWrite(luz12, HIGH);
+        digitalWrite(luz11, HIGH);
+        digitalWrite(luz17, HIGH);
+        digitalWrite(luz18, LOW);  
+        break;
+        case 9: // enciede luz guardar en memoria
+        digitalWrite(luz18, HIGH);  
         break;    
       default:
           break;

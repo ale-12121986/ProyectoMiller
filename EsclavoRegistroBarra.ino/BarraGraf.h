@@ -24,62 +24,64 @@ class BarraGraf{
     const byte dir4 = 41;
     const byte dir5 = 42;
     const byte dir6 = 43;
-    const byte clock1 = 44;
-    const byte clock2 = 45;
-    const byte clock3 = 46;
-    byte datos[16] = {dato1, dato2, dato3, dato4, dato5, dato6, dato7, dato8,dato9, dato10, dato11, dato12, dato13, dato14, dato15, dato16};
-    byte direccion[6] = {dir1, dir2, dir3, dir4,dir5, dir6};
-    byte clocks[3] ={clock1, clock2, clock3};
-    byte direcciones[29][6] ={
-      /* 1*/ {0,0,0,0,0,0},
+    const byte habilitarclock = 44;
+    const byte enviarDatoBajo = 46;
+    const byte enviarDatoAlto = 45;
+    boolean registroBajo = false, registroAlto= false;
+    int datos[16] = {dato1, dato2, dato3, dato4, dato5, dato6, dato7, dato8, dato9, dato10, dato11, dato12, dato13, dato14, dato15, dato16};
+    int direccionPuerto[6] = {dir1, dir2, dir3, dir4, dir5, dir6};
+    //int clocks[3] ={clock0, clock1, clock2};
+    const int datoDirecciones[29][6] ={
+      /* 0*/ {0,0,0,0,0,0},
       /* 1*/ {1,0,0,0,0,0},
-      /* 2*/ {0,1,0,0,0,0},
+      /* 2*/ {1,0,1,1,1,1},
       /* 3*/ {1,1,0,0,0,0},
       /* 4*/ {0,0,1,0,0,0},
       /* 5*/ {1,0,1,0,0,0},
-      /* 6*/ {0,1,1,0,0,0},
-      /* 7*/ {1,1,1,0,0,0},
-      /* 8*/ {0,0,0,1,0,0}, 
-      /* 9*/ {1,0,0,1,0,0},
-      /*10*/ {0,1,0,1,0,0},
-      /*11*/ {1,1,0,1,0,0},
-      /*12*/ {0,0,1,1,0,0},
-      /*13*/ {1,0,1,1,0,0},
-      /*14*/ {0,1,1,1,0,0},
-      /*15*/ {1,1,1,1,0,0},
-      /*16*/ {0,0,0,0,1,0},
-      /*17*/ {1,0,0,0,1,0},
-      /*18*/ {0,1,0,0,1,0}, 
-      /*19*/ {1,1,0,0,1,0},
-      /*20*/ {0,0,1,0,1,0},
-      /*21*/ {1,0,1,0,1,0},
-      /*22*/ {0,1,1,0,1,0},
-      /*23*/ {1,1,1,0,1,0},
-      /*24*/ {0,0,0,1,1,0},
-      /*25*/ {1,0,0,1,1,0},
-      /*26*/ {0,1,0,1,1,0},
-      /*27*/ {1,1,0,1,1,0}, 
-      /*28*/ {0,0,1,1,1,0},      
+      /* 6*/ {1,0,0,1,1,1},
+      /* 7*/ {0,0,0,1,1,1},
+      /* 8*/ {1,1,1,0,1,1}, 
+      /* 9*/ {0,1,1,0,1,1},
+      /*10*/ {1,0,1,0,1,1},
+      /*11*/ {0,0,1,0,1,1},
+      /*12*/ {1,1,0,0,1,1},
+      /*13*/ {0,1,0,0,1,1},
+      /*14*/ {1,0,0,0,1,1},
+      /*15*/ {0,0,0,0,1,1},
+      /*16*/ {1,1,1,1,0,1},
+      /*17*/ {0,1,1,1,0,1},
+      /*18*/ {1,0,1,1,0,1}, 
+      /*19*/ {0,0,1,1,0,1},
+      /*20*/ {1,1,0,1,0,1},
+      /*21*/ {0,1,0,1,0,1},
+      /*22*/ {1,0,0,1,0,1},
+      /*23*/ {0,0,0,1,0,1},
+      /*24*/ {1,1,1,0,0,1},
+      /*25*/ {0,1,1,0,0,1},
+      /*26*/ {1,0,1,0,0,1},
+      /*27*/ {0,0,1,0,0,1}, 
+      /*28*/ {1,1,0,0,0,1},      
     };
-    byte valortintero[17][16] ={
-      /* 0*/ {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-      /* 1*/ {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-      /* 2*/ {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-      /* 3*/ {1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
-      /* 4*/ {1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0},
-      /* 5*/ {1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0},
-      /* 6*/ {1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0},
-      /* 7*/ {1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0},
+    const int valortintero[17][16] ={
+      /* 0*/ {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+      /* 1*/ {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
+      /* 2*/ {1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0},
+      /* 3*/ {1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0},
+      /* 4*/ {1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0},
+      /* 5*/ {1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0},
+      /* 6*/ {1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0},
+      /* 7*/ {1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0},
       /* 8*/ {1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0}, 
-      /* 9*/ {1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0},
-      /*10*/ {1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0},
-      /*11*/ {1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0},
-      /*12*/ {1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0},
-      /*13*/ {1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0},
-      /*14*/ {1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0},
-      /*15*/ {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0},
-      /*16*/ {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-    };        
+      /* 9*/ {1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0},
+      /*10*/ {1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0},
+      /*11*/ {1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0},
+      /*12*/ {1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0},
+      /*13*/ {1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0},
+      /*14*/ {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+      /*15*/ {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+      /*16*/ {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+    };
+  int y = 0;
   public: 
 
   void configurar(){
@@ -88,39 +90,77 @@ class BarraGraf{
       digitalWrite(datos[i], LOW);
     }      
     for (int i = 0; i<6; i++){    
-      pinMode(direccion[i], OUTPUT);
-      digitalWrite(direccion[i], LOW);
+      pinMode(direccionPuerto[i], OUTPUT);
+      digitalWrite(direccionPuerto[i], HIGH);
     }
-    for (int i = 0; i<4; i++){    
-      pinMode(clocks[i], OUTPUT);
-      digitalWrite(clocks[i], LOW);
-    }    
+    pinMode(habilitarclock, OUTPUT);
+    //digitalWrite(habilitarclock, HIGH);
+    pinMode(enviarDatoBajo, OUTPUT);
+    //digitalWrite(enviarDatoBajo, HIGH);
+    pinMode(enviarDatoAlto, OUTPUT);
+    //digitalWrite(enviarDatoAlto, HIGH);
+    digitalWrite(habilitarclock, LOW);
+    digitalWrite(enviarDatoAlto, LOW);
+    digitalWrite(enviarDatoBajo, LOW);
   }
   
   void direccionar(byte valor){
+    digitalWrite(habilitarclock, LOW); //deshabilitador de clock
+    Serial.println(valor);
     for (int i = 0; i < 6; i++){
-        digitalWrite(direcciones[i], direcciones[valor][i]);
-        digitalWrite(clocks[3], HIGH);
+        digitalWrite(direccionPuerto[i], datoDirecciones[valor][i]);
+        Serial.print(datoDirecciones[valor][i]);
       }
+      //digitalWrite(habilitarclock, HIGH); //habilitador de clock
   }
     
   void imprimir(int valor){
-    if(valor < 51){
-      digitalWrite(clocks[0], HIGH);
-      for (int i = 0; i < 18; i++) {
-        digitalWrite(datos[i], valortintero[valor][i]);
-      }            
-      digitalWrite(clocks[0], LOW);
+    if(valor <= 50){
+      registroBajo = true;
+      registroAlto = false;
+      y = map(valor, 0, 50, 0, 16);
+      Serial.print("entro el primer grupo de leds y encendio: ");
+      Serial.println(y);    
+      //digitalWrite(clocks[1], LOW); //escribir los primeros 16 bit
+      for (int i = 0; i<16; i++) {
+        digitalWrite(datos[i], valortintero[y][i]);
+        Serial.print(valortintero[y][i]);
+        if(y<=16){
+          habilitarDatoBajo();
+        }
+        else{
+          digitalWrite(enviarDatoBajo, LOW);
+        }
+      }
     }
-    else if(valor > 51 && valor < 100){
+    if(valor > 50 ){
+      registroAlto = true;
+      registroBajo = false;
+      Serial.print("entro el segundo grupo de leds y encendio: ");
       valor = valor - 50;
-      digitalWrite(clocks[1], HIGH);
-      for (int i = 0; i < 18; i++) {
-        digitalWrite(datos[i], valortintero[valor][i]);
-      }            
-      digitalWrite(clocks[1], LOW);
+      y = map(valor, 0, 50, 0, 16);
+      Serial.println(y);
+      for (int i = 0; i < 16; i++) {
+        digitalWrite(datos[i], valortintero[y][i]);
+        Serial.print(valortintero[y][i]);
+        if(y<=16){
+          habilitarDatoAlto();
+        }
+        else{
+          digitalWrite(enviarDatoAlto, LOW);
+        }
+      }
     }
-      digitalWrite(clocks[2], LOW);
   }
-  
+  void habilitarDatoAlto(){
+    digitalWrite(habilitador, LOW);  //habilito el clock
+    digitalWrite(enviarDatoAlto, HIGH);  //dejar de escribir los segundos 16 bits
+    digitalWrite(enviarDatoBajo, LOW);  //escribir los primeros 16 bits
+  }
+  void habilitarDatoBajo(){
+    digitalWrite(habilitador, LOW);  //habilito el clock  
+    digitalWrite(enviarDatoBajo, HIGH);
+    digitalWrite(enviarDatoAlto, LOW);
+    //digitalWrite(habilitador, LOW);
+  }
 };

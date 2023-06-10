@@ -138,8 +138,9 @@ class Registro{
   void DireccionBarra(int direccion){
       Wire.beginTransmission(2); // transmit to devi        
       Wire.write("bgf");   
-      delayMicroseconds(5);
+      //delayMicroseconds(100);
       Wire.write(direccion);              // sends one byte
+      //delayMicroseconds(100);
       Wire.endTransmission();
     }
   void ValorBarra(int valor){

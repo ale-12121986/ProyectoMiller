@@ -18,14 +18,14 @@ class DatosDisplay{
 /*8*/ {0,0,0,1}, 
 /*9*/ {1,0,0,1},
 };  
-    const byte u1 = 22;
-    const byte u2 = 24;
-    const byte u3 = 26;
-    const byte u4 = 28;
-    const byte d1 = 23;
-    const byte d2 = 25;
-    const byte d3 = 27;
-    const byte d4 = 29;
+    const byte u1 = 22;   //D0.0
+    const byte u2 = 24;   //D0.1
+    const byte u3 = 26;   //D0.2
+    const byte u4 = 28;   //D0.3
+    const byte d1 = 23;   //D0
+    const byte d2 = 25;   //D1
+    const byte d3 = 27;   //D2
+    const byte d4 = 29;   //D3
     const byte dis1 = 30;
     const byte dis2 = 31;
     const byte habilitarDisplay = 32; 
@@ -35,22 +35,22 @@ class DatosDisplay{
     void selecDisplay(int pines){ // configura los pines para seleccionar que display se va a escribir
       switch (pines) {
         case 1:
-          Serial.println("display 1");  // Escribe el display 1
+          //Serial.println("display 1");  // Escribe el display 1
           digitalWrite(dis1, LOW);
           digitalWrite(dis2, LOW);
           break;
         case 2:
-          Serial.println("display 2");  // Escribe el display 2
+          //Serial.println("display 2");  // Escribe el display 2
           digitalWrite(dis1, HIGH);
           digitalWrite(dis2, LOW);
           break;
         case 3:
-          Serial.println("display 3");  // Escribe el display 3
+          //Serial.println("display 3");  // Escribe el display 3
           digitalWrite(dis1, LOW);
           digitalWrite(dis2, HIGH);
           break;
         case 4:
-          Serial.println("display 4");  // Escribe el display 4
+          //Serial.println("display 4");  // Escribe el display 4
           digitalWrite(dis1, HIGH);
           digitalWrite(dis2, HIGH);
         break;
@@ -59,8 +59,8 @@ class DatosDisplay{
       }
     }
     void imprimirDisplay(int unidad, int decena){
-      Serial.println(decena);
-      Serial.println(unidad);      
+      //Serial.println(decena);
+      //Serial.println(unidad);      
       for (int i=0; i<4; i++){
         digitalWrite(displayUnidad[i], DIGITOS[unidad][i]);
         digitalWrite(displayDecena[i], DIGITOS[decena][i]);
