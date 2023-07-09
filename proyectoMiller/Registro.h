@@ -26,51 +26,18 @@ class Registro{
     Wire.beginTransmission(2); // transmit to devi 
     Wire.write("lat");
     registroDeLectura = "lateral";
-    switch (valor) {
-    case 0: //detiene el valor lateral
-      Wire.write(0);
-      Wire.endTransmission();    // stop transmitting  
-    case 1: //centra el valor lateral
-      Wire.write(1);
-      Wire.endTransmission();    // stop transmitting
-    break;
-    case 2: //incrementa el valor lateral
-      Wire.write(2);
-      Wire.endTransmission();    // stop transmitting
-    break;
-    case 3: //disminuye el valor lateral
-      Wire.write(3);
-      Wire.endTransmission();    // stop transmitting
-    break;
-    default:
-    break;
-    }          
+    Wire.write(valor);
+    Wire.endTransmission();    // stop transmitting            
   }
-  void moverRegistroCircunferencial(int valor){
+  void moverRegistroCircunferencial(int valor){ // envio valor circunferencial
     Wire.beginTransmission(2); // transmit to devi
     Wire.write("cir");
     registroDeLectura = "circunferencial";
-    switch (valor) {
-    case 0: //detiene el valor lateral
-      Wire.write(0);
-      Wire.endTransmission();    // stop transmitting  
-    case 1: //centra el valor lateral
-      Wire.write(1);
-      Wire.endTransmission();    // stop transmitting
-    break;
-    case 2: //incrementa el valor lateral
-      Wire.write(2);
-      Wire.endTransmission();    // stop transmitting
-    break;
-    case 3: //disminuye el valor lateral
-      Wire.write(3);
-      Wire.endTransmission();    // stop transmitting
-    break;
-    default:
-    break;
-    }
+    Wire.write(valor);
+    Wire.endTransmission();
+
   }
-  void  leerTransmisor(){
+   String leerTransmisor(){
   //Serial.println("Entro en la recepcion de datos");
   Wire.requestFrom(2, 1);    // request 6 bytes from slave device #2
   nDato = 0;
@@ -87,11 +54,13 @@ class Registro{
     char c = Wire.read(); // receive a byte as character
     cadena[nDato] = c;
     cadenas =cadenas + c; 
-    Serial.print(cadena[nDato]); 
+    //Serial.print(cadena[nDato]); 
     nDato++;       
     }
-    Serial.println(cadenas);
-    Serial.println(" ");
+    //Serial.println(cadenas);
+    //Serial.println(" ");
+    
+    return cadenas;
 }
   void activarCuerpos(int cuerpos){
     //Serial.print("envia por i2c");
@@ -100,7 +69,7 @@ class Registro{
     Wire.beginTransmission(2); // transmit to devi        
     Wire.write("Cue");
     //Wire.endTransmission();
-    switch (cuerpos) {
+    switch (cuerpos) {  // se va activar el relay de los cuerpos
     case 1:
       //Wire.beginTransmission(2); // transmit to devi 
       Wire.write(cuerpos);              // sends one byte
@@ -138,16 +107,25 @@ class Registro{
   void DireccionBarra(int direccion){
       Wire.beginTransmission(2); // transmit to devi        
       Wire.write("bgf");   
-      //delayMicroseconds(100);
+      delay(1);
       Wire.write(direccion);              // sends one byte
-      //delayMicroseconds(100);
+      delay(1);
       Wire.endTransmission();
     }
   void ValorBarra(int valor){
     Wire.beginTransmission(2); // transmit to devi        
       Wire.write("bgv");   
-      delayMicroseconds(5);
+      delay(1);
       Wire.write(valor);              // sends one byte
+      delay(1);
+      Wire.endTransmission();
+  }
+  void BarridoTinta(int valor){
+    Wire.beginTransmission(2); // transmit to devi        
+      Wire.write("bbt");   
+      delay(1);
+      Wire.write(valor);              // sends one byte
+      delay(1);
       Wire.endTransmission();
   }
 };

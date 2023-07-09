@@ -2,6 +2,7 @@
 #include "RegistroCircunferencial.h"
 #include "RegistroLateral.h"
 #include "BarraGraf.h"
+#include "BarridoTinta.h"
 #include <Wire.h>
 #include "WString.h"
 byte nDato = 0;
@@ -14,12 +15,12 @@ int cuerpo, contador = 0;
 int valorTransmisor;
 bool bandera = false ;
 String variable2  = "";
-bool acRegCir = false, acRegLat = false;
+bool acRegCir = false, acRegLat = false, acBar= false;
 Cuerpo claseCuerpo;
 RegistroCircunferencial registroCircunferencial;
 RegistroLateral registroLateral;
 BarraGraf barraGRaf;
-
+BarridoTinta barridoTinta;
 void requestEvent() {
   contador++;
   if (contador == 2) {
@@ -27,10 +28,10 @@ void requestEvent() {
     contador = 0;      
   }
   if (contador == 1) {
-    if (acRegCir == true) {
+    if (acRegCir == true) { //entro a leer los valores del registro circunferencial
       valorTransmisor = registroCircunferencial.leerPotenciometro(claseCuerpo.cuerpo());
     }
-    if (acRegLat == true) {
+    if (acRegLat == true) { //entro a leer los valores del registro lateral
       valorTransmisor = registroLateral.leerPotenciometro(claseCuerpo.cuerpo());
     }    
     int valor = valorTransmisor;
@@ -69,12 +70,15 @@ void recibeDato(int howMany){
     if(strcmp(cadena,"bgv") == 0){
       prueba = "BGV";
     }
+    if(strcmp(cadena,"bbt") == 0){
+      prueba = "BBT";
+    }
   }
   //strcpy(cadena, "");
   //cuerpo = int(cadena[nDato-1]);
   cuerpo = Wire.read();
-  //Serial.println(cadena);
-  //Serial.println(cuerpo); 
+  Serial.println(cadena);
+  Serial.println(cuerpo); 
   bandera = true;
 }
 void setup() {
@@ -89,7 +93,7 @@ void setup() {
   Wire.onRequest(requestEvent); // register event
   claseCuerpo.seleccionarCuerpo(0);
   Serial.println( "Esclavo esclavo");
-  registroCircunferencial.moverRegistro(0);
+  registroCircunferencial.moverRegistro(4);
   registroLateral.moverRegistro(0);
   }
 
@@ -104,16 +108,16 @@ void loop() {
     }
     if (prueba.equals("REGC")) {
       Serial.println("entro en registro circunferencial"); 
-      acRegCir = true;
-      acRegLat = false;
+      acRegCir = true;  //leer valores del registro circunferencial activado
+      acRegLat = false; //leer valores del registro lateral desactivado
       bandera = false;
       //registroCircunferencial.cuerpo(cuerpo);
       registroCircunferencial.moverRegistro(cuerpo);
     }
     if (prueba.equals("REGL")) {
       Serial.println("entro en registro lateral");
-      acRegCir = false;      
-      acRegLat = true;
+      acRegCir = false;  //leer valores del registro circunferencial desactivado
+      acRegLat = true;  //leer valores del registro circunferencial activado
       bandera = false;
       //registroLateral
       //registroLateral.cuerpo(cuerpo);
@@ -129,7 +133,10 @@ void loop() {
       //Serial.println("entro en elcuerpo de barra");
       barraGRaf.imprimir(cuerpo);
     }    
-    
+    if(prueba.equals("BBT")){
+      Serial.println("entro en elcuerpo de barrido tinta mutua");
+      barridoTinta.moverRegistro(cuerpo);
+    }
     prueba = "";
   }  
 }

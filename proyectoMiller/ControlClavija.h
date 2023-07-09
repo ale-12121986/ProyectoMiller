@@ -5,18 +5,18 @@
 class ControlClavija{
   private:
   
-  const byte i = A7;//a7
+  const byte i = A5;//a7
   const byte k = A6;//a6
-  const byte j = A5;//a5
+  const byte j = A3;//a5
   const byte l = A4;//a4
-  const byte h = A3;//a3
-  const byte a = A8;
-  const byte b = A9;
-  const byte c = A10;
-  const byte d = A11;
+  const byte h = A14;//a3
+  const byte a = A7;
+  const byte b = A11;
+  const byte c = A9;
+  const byte d = A8;
   const byte e = A12;
   const byte f = A13;
-  const byte g = A14;
+  const byte g = A10;
   int direccion;
   int selecMotor;                      // Direccionde las clavijas 
   int N = 7;                           //1,2,3,4,5,6,7 
@@ -32,14 +32,14 @@ class ControlClavija{
 /*6 5*/  {{0,0,0,0,0,1,1},{0,1,0,0,0,1,1},{1,0,0,0,0,1,1},{1,1,0,0,0,1,1},{0,0,1,0,0,1,1},{0,1,1,0,0,1,1},{1,0,1,0,0,1,1},{1,1,1,0,0,1,1},{0,0,0,1,0,1,1},{0,1,0,1,0,1,1},{1,0,0,1,0,1,1},{1,1,0,1,0,1,1},{0,0,1,1,0,1,1},{0,1,1,1,0,1,1},{1,0,1,1,0,1,1}},
 };
   void imprimirDirClavija(int cuerpo, int placa){
-    // Serial.print("cuerpo: ");
-    // Serial.println(cuerpo);
-    // Serial.print("placa: ");
-    // Serial.println(placa); 
-    // Serial.println(" ");    
+    Serial.print("cuerpo: ");
+    Serial.println(cuerpo);
+    Serial.print("placa: ");
+    Serial.println(placa); 
+    Serial.println(" ");    
     for (int i=0; i<N; i++){
       digitalWrite(dirclavijas[i], clavijas[cuerpo-1][placa][i]);
-      //Serial.print(clavijas[cuerpo-1][placa][i]);     
+      Serial.print(clavijas[cuerpo-1][placa][i]);     
     }
     delay(1);
   }

@@ -11,6 +11,7 @@ class RegistroLateral{
   byte lateral6 = A10;  //potenciometro de registro lateral del cuerpo 6
   byte registroLateralMas = 10;
   byte registroLateralMenos = 11;
+  
   int dato, cuerpos = 1;
  
   public:
@@ -50,33 +51,27 @@ class RegistroLateral{
     //Serial.println("Entro en leer Pot ");
     //Serial.print(cuerpo);
     if (cuerpo == 1) {
-      dato = analogRead(lateral1);
-      //regLatCuerpo1 = map(dato, 0, 1023, -99, 99);
-      //Serial.println(regLatCuerpo1);        
+      dato = analogRead(lateral1);        
       return dato;
     }
     else if (cuerpo == 2) {
       dato = analogRead(lateral2);
-      //regLatCuerpo2 = map(dato, 0, 1023, -99, 99);
-      //Serial.println(regLatCuerpo2);        
+        
       return dato;
     }
     else if (cuerpo == 3) {
       dato = analogRead(lateral3);
-      //regLatCuerpo3 = map(dato, 0, 1023, -99, 99);
-      //Serial.println(regLatCuerpo3);        
+      
       return dato;
     }
     else if (cuerpo == 4) {
       dato = analogRead(lateral4);
-      //regLatCuerpo4 = map(dato, 0, 1023, -99, 99);
-      //Serial.println(regLatCuerpo4);        
+ 
       return dato;
     }
     else if (cuerpo == 5) {
       dato = analogRead(lateral5);
-      //regLatCuerpo5 = map(dato, 0, 1023, -99, 99);
-      //Serial.println(regLatCuerpo5);        
+       
       return dato;
     }
     else if (cuerpo == 6) {

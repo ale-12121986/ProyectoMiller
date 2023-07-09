@@ -2,18 +2,18 @@
 class Iluminacion{
   private:
   //direccion de la iluminacion   
-    const byte luz2 = 37;     //cuerpo1
-    const byte luz3 = 38;     //cuerpo3
-    const byte luz4 = 39;     // Barrido tinta centro
-    const byte luz5 = 40;     //cuerpo4
-    const byte luz6 = 41;     //M1   
-    const byte luz7 = 42;     //M2
-    const byte luz8 = 43;     //Error
-    const byte luz11 = 44;   //cuerpo6
+    const byte luz2 = 53;     //cuerpo1
+    const byte luz3 = 47;     //cuerpo3
+    const byte luz4 = 2;     // Barrido tinta centro
+    const byte luz5 = 48;     //cuerpo4
+    const byte luz6 = 52;     //M1   
+    const byte luz7 = 49;     //M2
+    const byte luz8 = 50;     //Error
+    const byte luz11 = 46;   //cuerpo6
     const byte luz12 = 45;   //cuerpo5
-    const byte luz16 = 46;   //cuerpo2
-    const byte luz17 = 47;    //cambio de cuerpo ojo falta programar
-    const byte luz18 = 48;    //guardar en memoria ojo falta programar 
+    const byte luz16 = 51;   //cuerpo2
+    const byte luz17 = 3;    //cambio de cuerpo ojo falta programar
+    const byte luz18 = 4;    //guardar en memoria ojo falta programar 
     int dirControlIluminacion[12] = {
       luz2, luz3, luz4, luz5, luz6, luz7, luz8, luz11,
       luz12, luz16 ,luz17 ,luz18
@@ -23,7 +23,7 @@ class Iluminacion{
   void configurar(){
     for(int i=0; i<=11;i++){
       pinMode(dirControlIluminacion[i], OUTPUT);
-      digitalWrite(dirControlIluminacion[i], LOW);
+      digitalWrite(dirControlIluminacion[i], HIGH);
     }         
   }
   void encenderCuerpo(int cuerpoActivado){
@@ -34,6 +34,7 @@ class Iluminacion{
         digitalWrite(luz3, HIGH);        
         digitalWrite(luz5, HIGH);
         digitalWrite(luz12, HIGH);
+        //digitalWrite(luz7, HIGH);
         digitalWrite(luz11, HIGH); 
         digitalWrite(luz17, HIGH);
         digitalWrite(luz18, HIGH); 
@@ -107,7 +108,7 @@ class Iluminacion{
         digitalWrite(luz18, LOW);  
         break;
         case 9: // enciede luz guardar en memoria
-        digitalWrite(luz18, HIGH);  
+        //digitalWrite(luz18, HIGH);  
         break;    
       default:
           break;
@@ -120,6 +121,7 @@ class Iluminacion{
       digitalWrite(luz8, HIGH);
       digitalWrite(luz4, HIGH);        
       digitalWrite(luz6, HIGH);
+      break;
     case 1:   //Se seleccion M1    
       digitalWrite(luz7, HIGH);
       digitalWrite(luz8, HIGH);
