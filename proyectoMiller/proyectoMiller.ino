@@ -691,8 +691,8 @@ Tinteros:
 
   if(digitalRead(Boton5) == LOW){  //incrementar
     controlarClavija.posInicial();
-    Serial.println("Boton 1(Boton Boton + fuente de tinta)");
-    controlarClavija.motorIzquierdoMas(cuerpos, 0);
+    Serial.println("Boton 5(Boton Boton + fuente de tinta)");
+    controlarClavija.motorDerechoMas(cuerpos, 0);
     while(digitalRead(Boton5) == LOW){
       retardo50ms();
       leerPotenciometro = ejecucionDeClavija(1);
@@ -702,7 +702,7 @@ Tinteros:
   }
   if(digitalRead(Boton1) == LOW){  //decrementar
     controlarClavija.posInicial();
-    Serial.println("Se activa el registro lateral menos");
+    Serial.println("Boton 1(Boton Boton - fuente de tinta)");
     controlarClavija.motorIzquierdoMenos(cuerpos, 0);
     while(digitalRead(Boton1) == LOW){
       retardo50ms();

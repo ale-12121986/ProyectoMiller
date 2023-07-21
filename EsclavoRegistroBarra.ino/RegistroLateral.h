@@ -28,20 +28,20 @@ class RegistroLateral{
   void moverRegistro(int valor){
     switch (valor) {
     case 0:   //descativar
-      digitalWrite(registroLateralMas, HIGH);
-      digitalWrite(registroLateralMenos, HIGH);
+      digitalWrite(registroLateralMas, LOW);
+      digitalWrite(registroLateralMenos, LOW);
     break;
     case 1:   //centrar registro
     break;
     case 2:   //subir registro
       Serial.println("sube");
-      digitalWrite(registroLateralMas, LOW);
-      digitalWrite(registroLateralMenos, HIGH);
+      digitalWrite(registroLateralMas, HIGH);
+      digitalWrite(registroLateralMenos, LOW);
     break;
     case 3:   //bajar registro
       Serial.println("baja");
-      digitalWrite(registroLateralMas, HIGH);
-      digitalWrite(registroLateralMenos, LOW);
+      digitalWrite(registroLateralMas, LOW);
+      digitalWrite(registroLateralMenos, HIGH);
     break;
     default:
     break;

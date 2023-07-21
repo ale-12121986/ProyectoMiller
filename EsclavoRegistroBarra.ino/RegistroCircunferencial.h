@@ -38,18 +38,18 @@ class RegistroCircunferencial{
     break;
     case 2:   //subir registro
       Serial.println("subir");
-      digitalWrite(rCirMas, LOW);
-      digitalWrite(rCirMenos, HIGH);
-    break;
-    case 3:   //bajar registro
-      Serial.println("bajar");
       digitalWrite(rCirMas, HIGH);
       digitalWrite(rCirMenos, LOW);
     break;
+    case 3:   //bajar registro
+      Serial.println("bajar");
+      digitalWrite(rCirMas, LOW);
+      digitalWrite(rCirMenos, HIGH);
+    break;
     case 4:   //descativar
       Serial.println("parar");
-      digitalWrite(rCirMas, HIGH);
-      digitalWrite(rCirMenos, HIGH);
+      digitalWrite(rCirMas, LOW);
+      digitalWrite(rCirMenos, LOW);
     break;
     default:
     break;

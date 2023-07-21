@@ -4,19 +4,19 @@
 
 class ControlClavija{
   private:
-  
-  const byte i = A5;//a7
-  const byte k = A6;//a6
-  const byte j = A3;//a5
-  const byte l = A4;//a4
-  const byte h = A14;//a3
-  const byte a = A7;
-  const byte b = A11;
-  const byte c = A9;
-  const byte d = A8;
-  const byte e = A12;
-  const byte f = A13;
-  const byte g = A10;
+                     // placa interface 
+  const byte a = A7; //8
+  const byte b = A11;//4
+  const byte c = A9; //6
+  const byte d = A8; //7
+  const byte e = A12;//3
+  const byte f = A13;//2
+  const byte g = A10;//5
+  const byte h = A14;//1
+  const byte i = A5; //10
+  const byte j = A3; //12
+  const byte k = A6; //9
+  const byte l = A4; //11
   int direccion;
   int selecMotor;                      // Direccionde las clavijas 
   int N = 7;                           //1,2,3,4,5,6,7 
@@ -62,78 +62,74 @@ class ControlClavija{
   }
 
   void posInicial(){
-    digitalWrite(j, HIGH);
+    digitalWrite(j, LOW);//HIGH
   }
   
   void motorIzquierdoMas(int cuerpo, int placa){
     imprimirDirClavija(cuerpo, placa);
-    digitalWrite(h, HIGH);
-    digitalWrite(j, LOW);
-    digitalWrite(i, HIGH);
-    digitalWrite(k, LOW);
-    digitalWrite(l, HIGH);
+    digitalWrite(h, LOW);// HIGH
+    digitalWrite(j, HIGH);//LOW
+    digitalWrite(i, LOW);//HIGH
+    digitalWrite(k, HIGH);//LOW
+    digitalWrite(l, LOW);//HIGH
     delay(25);
-    digitalWrite(l, LOW);
-    
-    
+    digitalWrite(l, HIGH);//LOW  
   }
   void motorIzquierdoMenos(int cuerpo, int placa){    
     imprimirDirClavija(cuerpo, placa);
-    digitalWrite(h, HIGH);
-    digitalWrite(j, LOW);
-    digitalWrite(i, LOW);
-    digitalWrite(k, HIGH);
-    digitalWrite(l, HIGH);
+    digitalWrite(h, LOW);//HIGH
+    digitalWrite(j, HIGH);//LOW
+    digitalWrite(i, HIGH);//LOW
+    digitalWrite(k, LOW);//HIGH
+    digitalWrite(l, LOW);//HIGH
     delay(25);
-    digitalWrite(l, LOW);
-    
-    
+    digitalWrite(l, HIGH);//LOW
   }
   void motorDerechoMas(int cuerpo, int placa){
     imprimirDirClavija(cuerpo, placa);
-    digitalWrite(j, LOW);
-    digitalWrite(h, LOW);
-    digitalWrite(i, HIGH);
-    digitalWrite(k, LOW);
-    digitalWrite(l, HIGH);
+    digitalWrite(j, HIGH);//LOW
+    digitalWrite(h, HIGH);//LOW
+    digitalWrite(i, LOW);//HIGH
+    digitalWrite(k, HIGH);//LOW
+    digitalWrite(l, LOW);//HIGH
     delay(25);
-    digitalWrite(l, LOW);  
+    digitalWrite(l, HIGH);//LOW  
   }
   void motorDerechoMenos(int cuerpo ,int placa){
     imprimirDirClavija(cuerpo, placa);
-    digitalWrite(j, LOW);
-    digitalWrite(h, LOW);
-    digitalWrite(i, LOW);
-    digitalWrite(k, HIGH);
-    digitalWrite(l, HIGH);
+    digitalWrite(j, HIGH);//LOW
+    digitalWrite(h, HIGH);//LOW
+    digitalWrite(i, HIGH);//LOW
+    digitalWrite(k, LOW);//HIGH
+    digitalWrite(l, LOW);//HIGH
     delay(25);
-    digitalWrite(l, LOW);
+    digitalWrite(l, HIGH);//LOW
   }
 
   void resetflipflop(){
-    digitalWrite(i, LOW);
-    digitalWrite(k, LOW);
-    digitalWrite(l, HIGH);
+    digitalWrite(i, HIGH);//LOW
+    digitalWrite(k, HIGH);//LOW
+    digitalWrite(l, LOW);//HIGH
     delay(5);
-    digitalWrite(l, LOW);
-    digitalWrite(j, HIGH);
+    digitalWrite(l, HIGH);//LOW
+    digitalWrite(j, LOW);//HIGH
     for (int i=0; i<N; i++){
-      digitalWrite(dirclavijas[i], LOW);       
+      digitalWrite(dirclavijas[i], HIGH);//LOW       
     }
   }
   
   void leerPotIzquierdo(int cuerpo, int placa){
     imprimirDirClavija(cuerpo, placa);
     delay(10); 
-    digitalWrite(h, LOW);
-    digitalWrite(j, HIGH);
+    digitalWrite(h, HIGH);//LOW
+    digitalWrite(j, LOW);//HIGH
     
   }
   void leerPotderecho(int cuerpo, int placa){
     imprimirDirClavija(cuerpo, placa);
     delay(10); 
-    digitalWrite(h, HIGH);
-    digitalWrite(j, HIGH);
+    digitalWrite(h, LOW);//HIGH
+    digitalWrite(j, LOW);//HIGH
     
   }
 };

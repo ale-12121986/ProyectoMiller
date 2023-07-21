@@ -22,66 +22,66 @@ class Cuerpo{
     cuerpoSelec = cuerpo;
     switch (cuerpo) {
       case 0: //condicion inical
-        digitalWrite(cuerpo1, HIGH);
-        digitalWrite(cuerpo2, HIGH);
-        digitalWrite(cuerpo3, HIGH);
-        digitalWrite(cuerpo4, HIGH);
-        digitalWrite(cuerpo5, HIGH);
-        digitalWrite(cuerpo6, HIGH);
+        digitalWrite(cuerpo1, LOW);
+        digitalWrite(cuerpo2, LOW);
+        digitalWrite(cuerpo3, LOW);
+        digitalWrite(cuerpo4, LOW);
+        digitalWrite(cuerpo5, LOW);
+        digitalWrite(cuerpo6, LOW);
         break;            
       case 1: //Se activo el cuerpo 1
         Serial.println("entro cuerpo 1");
-        digitalWrite(cuerpo1, LOW);
-        digitalWrite(cuerpo2, HIGH);
-        digitalWrite(cuerpo3, HIGH);
-        digitalWrite(cuerpo4, HIGH);
-        digitalWrite(cuerpo5, HIGH);
-        digitalWrite(cuerpo6, HIGH);
+        digitalWrite(cuerpo1, HIGH);
+        digitalWrite(cuerpo2, LOW);
+        digitalWrite(cuerpo3, LOW);
+        digitalWrite(cuerpo4, LOW);
+        digitalWrite(cuerpo5, LOW);
+        digitalWrite(cuerpo6, LOW);
       break;
       case 2: //Se activo el cuerpo 2
         Serial.println("entro cuerpo 2");
-        digitalWrite(cuerpo1, HIGH);
-        digitalWrite(cuerpo2, LOW);
-        digitalWrite(cuerpo3, HIGH);
-        digitalWrite(cuerpo4, HIGH);
-        digitalWrite(cuerpo5, HIGH);
-        digitalWrite(cuerpo6, HIGH);
+        digitalWrite(cuerpo1, LOW);
+        digitalWrite(cuerpo2, HIGH);
+        digitalWrite(cuerpo3, LOW);
+        digitalWrite(cuerpo4, LOW);
+        digitalWrite(cuerpo5, LOW);
+        digitalWrite(cuerpo6, LOW);
       break;
       case 3: //Se activo el cuerpo 3
         Serial.println("entro cuerpo 3");
-        digitalWrite(cuerpo1, HIGH);
-        digitalWrite(cuerpo2, HIGH);
-        digitalWrite(cuerpo3, LOW);
-        digitalWrite(cuerpo4, HIGH);
-        digitalWrite(cuerpo5, HIGH);
-        digitalWrite(cuerpo6, HIGH);
+        digitalWrite(cuerpo1, LOW);
+        digitalWrite(cuerpo2, LOW);
+        digitalWrite(cuerpo3, HIGH);
+        digitalWrite(cuerpo4, LOW);
+        digitalWrite(cuerpo5, LOW);
+        digitalWrite(cuerpo6, LOW);
       break;
       case 4: //Se activo el cuerpo 4
         Serial.println("entro cuerpo 4");
-        digitalWrite(cuerpo1, HIGH);
-        digitalWrite(cuerpo2, HIGH);
-        digitalWrite(cuerpo3, HIGH);
-        digitalWrite(cuerpo4, LOW);
-        digitalWrite(cuerpo5, HIGH);
-        digitalWrite(cuerpo6, HIGH);
+        digitalWrite(cuerpo1, LOW);
+        digitalWrite(cuerpo2, LOW);
+        digitalWrite(cuerpo3, LOW);
+        digitalWrite(cuerpo4, HIGH);
+        digitalWrite(cuerpo5, LOW);
+        digitalWrite(cuerpo6, LOW);
       break;
       case 5: //Se activo el cuerpo 5
         Serial.println("entro cuerpo 5");
-        digitalWrite(cuerpo1, HIGH);
-        digitalWrite(cuerpo2, HIGH);
-        digitalWrite(cuerpo3, HIGH);
-        digitalWrite(cuerpo4, HIGH);
-        digitalWrite(cuerpo5, LOW);
-        digitalWrite(cuerpo6, HIGH);
+        digitalWrite(cuerpo1, LOW);
+        digitalWrite(cuerpo2, LOW);
+        digitalWrite(cuerpo3, LOW);
+        digitalWrite(cuerpo4, LOW);
+        digitalWrite(cuerpo5, HIGH);
+        digitalWrite(cuerpo6, LOW);
       break;
         case 6: //Se activo el cuerpo 6
         Serial.println("entro cuerpo 6");
-        digitalWrite(cuerpo1, HIGH);
-        digitalWrite(cuerpo2, HIGH);
-        digitalWrite(cuerpo3, HIGH);
-        digitalWrite(cuerpo4, HIGH);
-        digitalWrite(cuerpo5, HIGH);
-        digitalWrite(cuerpo6, LOW);
+        digitalWrite(cuerpo1, LOW);
+        digitalWrite(cuerpo2, LOW);
+        digitalWrite(cuerpo3, LOW);
+        digitalWrite(cuerpo4, LOW);
+        digitalWrite(cuerpo5, LOW);
+        digitalWrite(cuerpo6, HIGH);
       break;
       default:
       break;

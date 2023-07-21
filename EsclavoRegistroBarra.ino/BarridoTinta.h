@@ -20,18 +20,18 @@ class BarridoTinta{
     break;
     case 2:   //subir registro
       Serial.println("subir");
-      digitalWrite(barridoMas, LOW);
-      digitalWrite(barridoMenos, HIGH);
-    break;
-    case 3:   //bajar registro
-      Serial.println("bajar");
       digitalWrite(barridoMas, HIGH);
       digitalWrite(barridoMenos, LOW);
     break;
+    case 3:   //bajar registro
+      Serial.println("bajar");
+      digitalWrite(barridoMas, LOW);
+      digitalWrite(barridoMenos, HIGH);
+    break;
     case 4:   //descativar
       Serial.println("parar");
-      digitalWrite(barridoMas, HIGH);
-      digitalWrite(barridoMenos, HIGH);
+      digitalWrite(barridoMas, LOW);
+      digitalWrite(barridoMenos, LOW);
     break;
     default:
     break;
