@@ -4,11 +4,14 @@
 class RegistroLateral{
   private:
   byte lateral1 = A0;   //potenciometro de registro lateral del cuerpo 1
-  byte lateral2 = A2;   //potenciometro de registro lateral del cuerpo 2
-  byte lateral3 = A4;   //potenciometro de registro lateral del cuerpo 3
-  byte lateral4 = A6;   //potenciometro de registro lateral del cuerpo 4
-  byte lateral5 = A8;   //potenciometro de registro lateral del cuerpo 5
-  byte lateral6 = A10;  //potenciometro de registro lateral del cuerpo 6
+  byte datoA =A2;
+  byte datoB =A4;
+  byte datoC =A6;
+  // byte lateral2 = A2;   //potenciometro de registro lateral del cuerpo 2
+  // byte lateral3 = A4;   //potenciometro de registro lateral del cuerpo 3
+  // byte lateral4 = A6;   //potenciometro de registro lateral del cuerpo 4
+  // byte lateral5 = A8;   //potenciometro de registro lateral del cuerpo 5
+  // byte lateral6 = A10;  //potenciometro de registro lateral del cuerpo 6
   byte registroLateralMas = 10;
   byte registroLateralMenos = 11;
   
@@ -17,11 +20,10 @@ class RegistroLateral{
   public:
   void configurar(){
     pinMode(lateral1, INPUT);
-    pinMode(lateral2, INPUT);
-    pinMode(lateral3, INPUT);
-    pinMode(lateral4, INPUT);
-    pinMode(lateral5, INPUT);
-    pinMode(lateral6, INPUT);
+    pinMode(datoA, OUTPUT);
+    pinMode(datoB, OUTPUT);
+    pinMode(datoC, OUTPUT);
+    
     pinMode(registroLateralMas, OUTPUT);
     pinMode(registroLateralMenos, OUTPUT);
   }
@@ -51,33 +53,57 @@ class RegistroLateral{
     //Serial.println("Entro en leer Pot ");
     //Serial.print(cuerpo);
     if (cuerpo == 1) {
-      dato = analogRead(lateral1);        
+      digitalWrite(datoA, LOW);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, LOW);
+      delay(1);
+      dato = analogRead(lateral1);
+      Serial.println(dato);        
       return dato;
     }
     else if (cuerpo == 2) {
-      dato = analogRead(lateral2);
-        
+      digitalWrite(datoA, HIGH);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, LOW);
+      delay(1);
+      dato = analogRead(lateral1);
+      Serial.println(dato);  
       return dato;
     }
     else if (cuerpo == 3) {
-      dato = analogRead(lateral3);
-      
+      digitalWrite(datoA, LOW);
+      digitalWrite(datoB, HIGH);
+      digitalWrite(datoC, LOW);
+      delay(1);
+      dato = analogRead(lateral1);
+      Serial.println(dato);
       return dato;
     }
     else if (cuerpo == 4) {
-      dato = analogRead(lateral4);
- 
+      digitalWrite(datoA, HIGH);
+      digitalWrite(datoB, HIGH);
+      digitalWrite(datoC, LOW);
+      delay(1);
+      dato = analogRead(lateral1);
+      Serial.println(dato);
       return dato;
     }
     else if (cuerpo == 5) {
-      dato = analogRead(lateral5);
-       
+      digitalWrite(datoA, LOW);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, HIGH);
+      delay(1);
+      dato = analogRead(lateral1);
+      Serial.println(dato); 
       return dato;
     }
     else if (cuerpo == 6) {
-      dato = analogRead(lateral6);
+      digitalWrite(datoA, HIGH);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, HIGH);
+      dato = analogRead(lateral1);
       //regLatCuerpo6 = map(dato, 0, 1023, -99, 99);
-      //Serial.println(regLatCuerpo6);        
+      Serial.println(dato);        
       return dato;
     }
   }

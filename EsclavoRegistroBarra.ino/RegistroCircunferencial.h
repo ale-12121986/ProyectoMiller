@@ -6,11 +6,14 @@
 class RegistroCircunferencial{
   private:
   const byte registro1 = A1;    //potenciometro de registro circunferencial del cuerpo 1
-  const byte registro2 = A3;    //potenciometro de registro circunferencial del cuerpo 2
-  const byte registro3 = A5;    //potenciometro de registro circunferencial del cuerpo 3
-  const byte registro4 = A7;    //potenciometro de registro circunferencial del cuerpo 4
-  const byte registro5 = A9;    //potenciometro de registro circunferencial del cuerpo 5
-  const byte registro6 = A11;   //potenciometro de registro circunferencial del cuerpo 6
+  const byte datoA =A3;
+  const byte datoB =A5;
+  const byte datoC =A7;
+  // const byte registro2 = A3;    //potenciometro de registro circunferencial del cuerpo 2
+  // const byte registro3 = A5;    //potenciometro de registro circunferencial del cuerpo 3
+  // const byte registro4 = A7;    //potenciometro de registro circunferencial del cuerpo 4
+  // const byte registro5 = A9;    //potenciometro de registro circunferencial del cuerpo 5
+  // const byte registro6 = A11;   //potenciometro de registro circunferencial del cuerpo 6
   const byte rCirMas = 8;
   const byte rCirMenos = 9;
   int cuerpos = 1;
@@ -20,11 +23,10 @@ class RegistroCircunferencial{
   public:
   void configurar(){
     pinMode(registro1, INPUT);
-    pinMode(registro2, INPUT);
-    pinMode(registro3, INPUT);
-    pinMode(registro4, INPUT);
-    pinMode(registro5, INPUT);
-    pinMode(registro6, INPUT);
+    pinMode(datoA, OUTPUT);
+    pinMode(datoB, OUTPUT);
+    pinMode(datoC, OUTPUT);
+
     pinMode(rCirMas, OUTPUT);
     pinMode(rCirMenos, OUTPUT);
   }
@@ -59,40 +61,64 @@ class RegistroCircunferencial{
     //Serial.print("Entro en leer Pot ");
     //Serial.println(cuerpo);
     if (cuerpo == 1) {
+      digitalWrite(datoA, LOW);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, LOW);
+      delay(1);
       dato = analogRead(registro1);
       //regCirCuerpo1 = map(dato, 0, 1023, 0, 512);
       Serial.println(dato);        
       return dato;
     }
     else if (cuerpo == 2) {
-      dato = analogRead(registro2);
+      digitalWrite(datoA, HIGH);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, LOW);
+      delay(1);
+      dato = analogRead(registro1);
       //regCirCuerpo2 = map(dato, 0, 1023, 0, 512);
-      //Serial.println(dato);        
+      Serial.println(dato);        
       return dato;
     }
     else if (cuerpo == 3) {
-      dato = analogRead(registro3);
+      digitalWrite(datoA, LOW);
+      digitalWrite(datoB, HIGH);
+      digitalWrite(datoC, LOW);
+      delay(1);
+      dato = analogRead(registro1);
       //regCirCuerpo3 = map(dato, 0, 1023, 0, 512);
       Serial.println(dato);        
       return dato;
     }
     else if (cuerpo == 4) {
-      dato = analogRead(registro4);
+      digitalWrite(datoA, HIGH);
+      digitalWrite(datoB, HIGH);
+      digitalWrite(datoC, LOW);
+      delay(1);
+      dato = analogRead(registro1);
       //regCirCuerpo4 = map(dato, 0, 1023, 0, 512);
       Serial.println(dato);
                    
       return dato;
     }
     else if (cuerpo == 5) {
-      dato = analogRead(registro5);
+      digitalWrite(datoA, LOW);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, HIGH);
+      delay(1);
+      dato = analogRead(registro1);
       //regCirCuerpo5 = map(dato, 0, 1023, 0, 512);
       Serial.println(dato);        
       return dato;
     }
     else if (cuerpo == 6) {
-      dato = analogRead(registro6);
+      digitalWrite(datoA, HIGH);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, HIGH);
+      delay(1);
+      dato = analogRead(registro1);
       //regCirCuerpo6 = map(dato, 0, 1023, 0, 512);
-      //Serial.println(dato);        
+      Serial.println(dato);        
       return dato;
     }
   }

@@ -106,17 +106,17 @@ void barridoCuerpo(int cuerpos) {  //barre todos los cuerpos de las calvija e im
     //Serial.print("leyendo clavija");
     //Serial.println(i);
     controlarClavija.leerPotIzquierdo(cuerpos, i);
-    retardo50ms();
+    retardo100ms();
     leerPotenciometro = ejecucionDeClavija(4);  //va a la rutina de escribir en los display y trae el valor del potenciometro
     controlarClavija.leerPotderecho(cuerpos, i);
-    retardo50ms();
+    retardo100ms();
     i++;
     leerPotenciometro = ejecucionDeClavija(3);
     controlarClavija.leerPotIzquierdo(cuerpos, i);
-    retardo50ms();
+    retardo100ms();
     leerPotenciometro = ejecucionDeClavija(2);
     controlarClavija.leerPotderecho(cuerpos, i);
-    retardo50ms();
+    retardo100ms();
     leerPotenciometro = ejecucionDeClavija(1);
     i++;
   } while (i <= 14);
@@ -173,71 +173,71 @@ void direccionesDeBotones() {
   //Serial.print("LK");
   //Serial.println(direccionBotones);
   switch (direccionBotones) {
-    case 8:
-      placaClavija1 = 1;
-      placaClavija2 = 1;
-      placaClavija3 = 2;
-      placaClavija4 = 2;
+    case 14:
+      placaClavija1 = 2;
+      placaClavija2 = 2;
+      placaClavija3 = 1;
+      placaClavija4 = 1;
       dirBarra1 = 1;
       dirBarra2 = 2;
       dirBarra3 = 3;
       dirBarra4 = 4;
       break;
-    case 9:
-      placaClavija1 = 3;
-      placaClavija2 = 3;
-      placaClavija3 = 4;
-      placaClavija4 = 4;
+    case 13:
+      placaClavija1 = 4;
+      placaClavija2 = 4;
+      placaClavija3 = 3;
+      placaClavija4 = 3;
       dirBarra1 = 5;
       dirBarra2 = 6;
       dirBarra3 = 7;
       dirBarra4 = 8;
       break;
-    case 10:
-      placaClavija1 = 5;
-      placaClavija2 = 5;
-      placaClavija3 = 6;
-      placaClavija4 = 6;
+    case 12:
+      placaClavija1 = 6;
+      placaClavija2 = 6;
+      placaClavija3 = 5;
+      placaClavija4 = 5;
       dirBarra1 = 9;
       dirBarra2 = 10;
       dirBarra3 = 11;
       dirBarra4 = 12;
       break;
     case 11:
-      placaClavija1 = 7;
-      placaClavija2 = 7;
-      placaClavija3 = 8;
-      placaClavija4 = 8;
+      placaClavija1 = 8;
+      placaClavija2 = 8;
+      placaClavija3 = 7;
+      placaClavija4 = 7;
       dirBarra1 = 13;
       dirBarra2 = 14;
       dirBarra3 = 15;
       dirBarra4 = 16;
       break;
-    case 12:
-      placaClavija1 = 9;
-      placaClavija2 = 9;
-      placaClavija3 = 10;
-      placaClavija4 = 10;
+    case 10:
+      placaClavija1 = 10;
+      placaClavija2 = 10;
+      placaClavija3 = 9;
+      placaClavija4 = 9;
       dirBarra1 = 17;
       dirBarra2 = 18;
       dirBarra3 = 19;
       dirBarra4 = 20;
       break;
-    case 13:
-      placaClavija1 = 11;
-      placaClavija2 = 11;
-      placaClavija3 = 12;
-      placaClavija4 = 12;
+    case 9:
+      placaClavija1 = 12;
+      placaClavija2 = 12;
+      placaClavija3 = 11;
+      placaClavija4 = 11;
       dirBarra1 = 21;
       dirBarra2 = 22;
       dirBarra3 = 23;
       dirBarra4 = 24;
       break;
-    case 14:
-      placaClavija1 = 13;
-      placaClavija2 = 13;
-      placaClavija3 = 14;
-      placaClavija4 = 14;
+    case 8:
+      placaClavija1 = 14;
+      placaClavija2 = 14;
+      placaClavija3 = 13;
+      placaClavija4 = 13;
       dirBarra1 = 25;
       dirBarra2 = 26;
       dirBarra3 = 27;
@@ -444,7 +444,7 @@ Tinteros:
       registro.DireccionBarra(dirBarra1);
     }
     while (digitalRead(Boton7) == HIGH) {
-      retardo50ms();
+      
       leerPotenciometro = ejecucionDeClavija(4);  //va a la rutina de escribir en los display y trae el valor del potenciometro
       enviarDatoBarra(datoBarra);
       if (leerPotenciometro >= 900) {
@@ -464,10 +464,10 @@ Tinteros:
       registro.DireccionBarra(dirBarra1);
     }
     while (digitalRead(Boton1) == HIGH) {
-      retardo50ms();
+      
       leerPotenciometro = ejecucionDeClavija(4);  //va a la rutina de escribir en los display y trae el valor del potenciometro
       enviarDatoBarra(datoBarra);
-      if (leerPotenciometro <= 10) {
+      if (leerPotenciometro <= 100) {
         controlarClavija.resetflipflop();
       }
     }
@@ -484,7 +484,7 @@ Tinteros:
       registro.DireccionBarra(dirBarra2);
     }
     while (digitalRead(Boton2) == HIGH) {
-      retardo50ms();
+  
       leerPotenciometro = ejecucionDeClavija(3);  //va a la rutina de escribir en los display y trae el valor del potenciometro
       enviarDatoBarra(datoBarra);
       if (leerPotenciometro >= 900) {
@@ -504,10 +504,10 @@ Tinteros:
       registro.DireccionBarra(dirBarra2);
     }
     while (digitalRead(Boton6) == HIGH) {
-      retardo50ms();
+    
       leerPotenciometro = ejecucionDeClavija(3);  //va a la rutina de escribir en los display y trae el valor del potenciometro
       enviarDatoBarra(datoBarra);
-      if (leerPotenciometro <= 110) {
+      if (leerPotenciometro <= 100) {
         controlarClavija.resetflipflop();
       }
     }
@@ -543,7 +543,7 @@ Tinteros:
       registro.DireccionBarra(dirBarra3);
     }
     while (digitalRead(Boton3) == HIGH) {
-      retardo50ms();
+      
       leerPotenciometro = ejecucionDeClavija(2);
       enviarDatoBarra(datoBarra);
       if (leerPotenciometro <= 100) {
@@ -563,7 +563,7 @@ Tinteros:
       registro.DireccionBarra(dirBarra4);
     }
     while (digitalRead(Boton8) == HIGH) {
-      retardo50ms();
+    
       leerPotenciometro = ejecucionDeClavija(1);  //va a la rutina de escribir en los display y trae el valor del potenciometro
       enviarDatoBarra(datoBarra);
       if (leerPotenciometro >= 900) {
@@ -583,10 +583,11 @@ Tinteros:
       registro.DireccionBarra(dirBarra4);
     }
     while (digitalRead(Boton5) == HIGH) {
-      retardo50ms();
+      
       leerPotenciometro = ejecucionDeClavija(1);  //va a la rutina de escribir en los display y trae el valor del potenciometro
       enviarDatoBarra(datoBarra);
       if (leerPotenciometro <= 100) {
+        Serial.print("entro en proteccion");
         controlarClavija.resetflipflop();
       }
     }
@@ -693,10 +694,12 @@ Tinteros:
     controlarClavija.posInicial();
     Serial.println("Boton 5(Boton Boton + fuente de tinta)");
     controlarClavija.motorDerechoMas(cuerpos, 0);
+    moverRegistroBarra(2);
     while(digitalRead(Boton5) == LOW){
       retardo50ms();
       leerPotenciometro = ejecucionDeClavija(1);
     }
+    moverRegistroBarra(4);
     controlarClavija.resetflipflop();
     retardo10ms();
   }
@@ -704,10 +707,12 @@ Tinteros:
     controlarClavija.posInicial();
     Serial.println("Boton 1(Boton Boton - fuente de tinta)");
     controlarClavija.motorIzquierdoMenos(cuerpos, 0);
+    moverRegistroBarra(3);
     while(digitalRead(Boton1) == LOW){
       retardo50ms();
       leerPotenciometro = ejecucionDeClavija(1);
     }
+    moverRegistroBarra(4);
     controlarClavija.resetflipflop();
     retardo10ms();
   }

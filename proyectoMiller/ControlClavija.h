@@ -43,6 +43,7 @@ class ControlClavija{
     }
     delay(1);
   }
+  
   public:
 
   void configurar(){
