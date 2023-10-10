@@ -10,7 +10,7 @@
    </editor>
   </WINDOW>
   <WINDOW type="default" module="ARES">
-   <editor metric="0" gridmajor="2540000" mode="00000021" zoom="-1" scale="139" flipped="0" gridminor="508000" gridmode="32" snapidx="0" snap="2540" xcursor="0" orgmode="0" snaprange="91366">
+   <editor metric="0" gridmajor="2540000" mode="00000000" zoom="-1" scale="139" flipped="0" gridminor="508000" gridmode="32" snapidx="0" snap="2540" xcursor="0" orgmode="0" snaprange="91366">
     <world y1="-7620000" x1="-10160000" y2="7620000" x2="10160000"/>
     <centre x="-10920" y="242310"/>
     <origin x="0" y="0"/>
@@ -18,7 +18,7 @@
   </WINDOW>
  </FRAME>
  <MODULE name="ARES">
-  <editor metric="0" gridmajor="2540000" mode="00000021" zoom="-1" scale="139" flipped="0" gridminor="508000" gridmode="32" snapidx="0" snap="2540" xcursor="0" orgmode="0" snaprange="91366">
+  <editor metric="0" gridmajor="2540000" mode="00000000" zoom="-1" scale="139" flipped="0" gridminor="508000" gridmode="32" snapidx="0" snap="2540" xcursor="0" orgmode="0" snaprange="91366">
    <world y1="-7620000" x1="-10160000" y2="7620000" x2="10160000"/>
    <centre x="-10920" y="242310"/>
    <origin x="0" y="0"/>
