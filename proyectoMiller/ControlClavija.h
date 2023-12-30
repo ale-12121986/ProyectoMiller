@@ -1,4 +1,4 @@
-#include "HardwareSerial.h"
+//#include "HardwareSerial.h"
 #include "pins_arduino.h"
 #include "Arduino.h"
 
@@ -32,14 +32,14 @@ class ControlClavija{
 /*6 5*/  {{1,1,1,1,1,0,0},{1,0,1,1,1,0,0},{0,1,1,1,1,0,0},{0,0,1,1,1,0,0},{1,1,0,1,1,0,0},{1,0,0,1,1,0,0},{0,1,0,1,1,0,0},{0,0,0,1,1,0,0},{1,1,1,0,1,0,0},{1,0,1,0,1,0,0},{0,1,1,0,1,0,0},{0,0,1,0,1,0,0},{1,1,0,0,1,0,0},{1,0,0,0,1,0,0},{0,1,0,0,1,0,0}},
 };
   void imprimirDirClavija(int cuerpo, int placa){
-    Serial.print("cuerpo: ");
-    Serial.println(cuerpo);
-    Serial.print("placa: ");
-    Serial.println(placa); 
-    Serial.println(" ");    
+    //Serial.print("cuerpo: ");
+    // Serial.println(cuerpo);
+    // Serial.print("placa: ");
+    // Serial.println(placa); 
+    // Serial.println(" ");    
     for (int i=0; i<N; i++){
       digitalWrite(dirclavijas[i], clavijas[cuerpo-1][placa][i]);
-      Serial.print(clavijas[cuerpo-1][placa][i]);     
+      //Serial.print(clavijas[cuerpo-1][placa][i]);     
     }
     delay(1);
   }
@@ -115,7 +115,7 @@ class ControlClavija{
     digitalWrite(l, HIGH);//LOW
     digitalWrite(j, LOW);//HIGH
     for (int i=0; i<N; i++){
-      digitalWrite(dirclavijas[i], HIGH);//LOW       
+      digitalWrite(dirclavijas[i], LOW);//LOW       
     }
   }
   

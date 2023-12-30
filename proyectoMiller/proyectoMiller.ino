@@ -18,14 +18,14 @@ int dirBarra1 = 0, dirBarra2 = 0, dirBarra3 = 0, dirBarra4 = 0;
 boolean memoria = false, trabajo = false;
 int valorTinteros[6][28];
 int matricesCuerpos[6][28];
-const byte Boton1 = 22;  // cuerpo anterior
-const byte Boton2 = 29;  // cuerpo1
-const byte Boton3 = 28;  // cuerpo2
-const byte Boton4 = 26;  // cuerpo3
-const byte Boton5 = 23;  // cuerpo4
-const byte Boton6 = 27;  // cuerpo5
-const byte Boton7 = 25;  // cuerpo6
-const byte Boton8 = 24;  // selecciono cambiar
+const byte Boton1 = 23;  // cuerpo anterior 22
+const byte Boton2 = 28;  // cuerpo1 29
+const byte Boton3 = 29;  // cuerpo2 28
+const byte Boton4 = 27;  // cuerpo3  26
+const byte Boton5 = 22;  // cuerpo4
+const byte Boton6 = 26;  // cuerpo5  27
+const byte Boton7 = 24;  // cuerpo6  25
+const byte Boton8 = 25;  // selecciono cambiar 24
 const int pot = A2;
 const int pot2 = A1;
 int Centena, Decena, Unidad;
@@ -278,10 +278,10 @@ void setup() {
   //pinMode(poteDerecho,INPUT);
   //analogReference(DEFAULT);
 
-  Serial.begin(115200);
+  //Serial.begin(115200);
   iluminacion.trabajoMemoria(0);
   iluminacion.encenderCuerpo(0);
-  Serial.println("Inicio Imprenta miller");
+  //Serial.println("Inicio Imprenta miller");
 }
 void loop() {
   // put your main code here, to run repeatedly:
@@ -303,7 +303,7 @@ Inicio:
       memoria = false;
       trabajo = true;
       iluminacion.trabajoMemoria(1);
-      Serial.println("Se preciono M1 y se va a trabajo");
+      //Serial.println("Se preciono M1 y se va a trabajo");
       retardo300ms();
       goto Trabajar;
     }
@@ -315,7 +315,7 @@ Inicio:
       trabajo = false;
       memoria = true;
       iluminacion.trabajoMemoria(2);
-      Serial.println("Se preciono M2 y se va a memoria");
+      //Serial.println("Se preciono M2 y se va a memoria");
       //goto Memoria;
       goto Trabajar;
     }
@@ -330,7 +330,7 @@ trabajoCuerpo:
   //direccionControl.imprimirDireccion(4);// Direccion de las placas de seleccionar cuerpo
   if (digitalRead(Boton1) == HIGH) {
     iluminacion.encenderCuerpo(7);
-    Serial.println("Se selecciono el cuerpo anterior");
+    //Serial.println("Se selecciono el cuerpo anterior");
     cuerpoViejo2 = cuerpos;
     cuerpos = cuerpoViejo;
     iluminacion.encenderCuerpo(cuerpos);
@@ -346,7 +346,7 @@ trabajoCuerpo:
     }
   }
   if (digitalRead(Boton2) == HIGH) {
-    Serial.println("Se selecciono el cuerpo1");
+    //Serial.println("Se selecciono el cuerpo1");
     cuerpoViejo = cuerpos;
     cuerpos = 1;
     registro.activarCuerpos(cuerpos);
@@ -358,7 +358,7 @@ trabajoCuerpo:
       barridoCuerpo(cuerpos);
     }
   } else if (digitalRead(Boton3) == HIGH) {
-    Serial.println("Se selecciono el cuerpo2");
+    //Serial.println("Se selecciono el cuerpo2");
     cuerpoViejo = cuerpos;
     cuerpos = 2;
     registro.activarCuerpos(cuerpos);
@@ -370,7 +370,7 @@ trabajoCuerpo:
       barridoCuerpo(cuerpos);
     }
   } else if (digitalRead(Boton4) == HIGH) {
-    Serial.println("Se selecciono el cuerpo3");
+    //Serial.println("Se selecciono el cuerpo3");
     cuerpoViejo = cuerpos;
     cuerpos = 3;
     registro.activarCuerpos(cuerpos);
@@ -382,7 +382,7 @@ trabajoCuerpo:
       barridoCuerpo(cuerpos);
     }
   } else if (digitalRead(Boton5) == HIGH) {
-    Serial.println("Se selecciono el cuerpo4");
+    //Serial.println("Se selecciono el cuerpo4");
     cuerpoViejo = cuerpos;
     cuerpos = 4;
     registro.activarCuerpos(cuerpos);
@@ -394,7 +394,7 @@ trabajoCuerpo:
       barridoCuerpo(cuerpos);
     }
   } else if (digitalRead(Boton6) == HIGH) {
-    Serial.println("Se selecciono el cuerpo5");
+    //Serial.println("Se selecciono el cuerpo5");
     cuerpoViejo = cuerpos;
     cuerpos = 5;
     registro.activarCuerpos(cuerpos);
@@ -408,7 +408,7 @@ trabajoCuerpo:
     cuerpos = 6;
     registro.activarCuerpos(cuerpos);
     iluminacion.encenderCuerpo(cuerpos);
-    Serial.println("Se selecciono el cuerpo6");
+    //Serial.println("Se selecciono el cuerpo6");
     while (digitalRead(Boton7) == HIGH) {
       retardo100ms();
     }
@@ -422,7 +422,7 @@ trabajoCuerpo:
   } else if (digitalRead(Boton8) == HIGH) {
     //cuerpos = 90;
     //posCuerpo = 6;
-    Serial.println("Se selecciono cambiar");
+    //Serial.println("Se selecciono cambiar");
     while (digitalRead(Boton8) == HIGH) {
       retardo100ms();
       
@@ -438,7 +438,7 @@ Tinteros:
   if (digitalRead(Boton7) == HIGH) {  //motor izquierdo que gira derecha
     controlarClavija.posInicial();
     direccionControl.imprimirLaDireccion();
-    Serial.println("Boton 7(Boton izquierdo +)");
+    //Serial.println("Boton 7(Boton izquierdo +)");
     controlarClavija.motorIzquierdoMenos(cuerpos, placaClavija1);
     for (int i = 0; i < 2; i++) {
       registro.DireccionBarra(dirBarra1);
@@ -458,7 +458,7 @@ Tinteros:
   if (digitalRead(Boton1) == HIGH) {  //motor izquierdo que gira izquierda
     controlarClavija.posInicial();
     direccionControl.imprimirLaDireccion();
-    Serial.println("Boton 1(Boton izquierdo -)");
+    //Serial.println("Boton 1(Boton izquierdo -)");
     controlarClavija.motorIzquierdoMas(cuerpos, placaClavija1);
     for (int i = 0; i < 2; i++) {
       registro.DireccionBarra(dirBarra1);
@@ -478,7 +478,7 @@ Tinteros:
   if (digitalRead(Boton2) == HIGH) {  //motor derecho que gira derecha
     controlarClavija.posInicial();
     direccionControl.imprimirLaDireccion();
-    Serial.println("Boton 2(Boton Boton Derecho +)");
+    //Serial.println("Boton 2(Boton Boton Derecho +)");
     controlarClavija.motorDerechoMenos(cuerpos, placaClavija2);
     for (int i = 0; i < 2; i++) {
       registro.DireccionBarra(dirBarra2);
@@ -498,7 +498,7 @@ Tinteros:
   if (digitalRead(Boton6) == HIGH) {  //motor derecho que gira izquierda
     controlarClavija.posInicial();
     direccionControl.imprimirLaDireccion();
-    Serial.println("Boton 6(Boton Derecho -)");
+    //Serial.println("Boton 6(Boton Derecho -)");
     controlarClavija.motorDerechoMas(cuerpos, placaClavija2);
     for (int i = 0; i < 2; i++) {
       registro.DireccionBarra(dirBarra2);
@@ -518,7 +518,7 @@ Tinteros:
   if (digitalRead(Boton4) == HIGH) {  //motor izquierdo que girai derecha
     controlarClavija.posInicial();
     direccionControl.imprimirLaDireccion();
-    Serial.println("Boton 4(Boton izquierdo +)");
+    //Serial.println("Boton 4(Boton izquierdo +)");
     controlarClavija.motorIzquierdoMenos(cuerpos, placaClavija3);
     for (int i = 0; i < 2; i++) {
       registro.DireccionBarra(dirBarra3);
@@ -537,7 +537,7 @@ Tinteros:
   if (digitalRead(Boton3) == HIGH) {  //motor izquierdo que gira izquierda
     controlarClavija.posInicial();
     direccionControl.imprimirLaDireccion();
-    Serial.println("Boton 3(Boton izquierdo -)");
+    //Serial.println("Boton 3(Boton izquierdo -)");
     controlarClavija.motorIzquierdoMas(cuerpos, placaClavija3);
     for (int i = 0; i < 2; i++) {
       registro.DireccionBarra(dirBarra3);
@@ -557,7 +557,7 @@ Tinteros:
   if (digitalRead(Boton8) == HIGH) {  //motor derecho que gira derecha
     controlarClavija.posInicial();
     direccionControl.imprimirLaDireccion();
-    Serial.println("Boton 8(Boton Boton Derecho +)");
+    //Serial.println("Boton 8(Boton Boton Derecho +)");
     controlarClavija.motorDerechoMenos(cuerpos, placaClavija4);
     for (int i = 0; i < 2; i++) {
       registro.DireccionBarra(dirBarra4);
@@ -577,7 +577,7 @@ Tinteros:
   if (digitalRead(Boton5) == HIGH) {  //motor derecho que gira izquierda
     controlarClavija.posInicial();
     direccionControl.imprimirLaDireccion();
-    Serial.println("Boton 5(Boton Derecho -)");
+    //Serial.println("Boton 5(Boton Derecho -)");
     controlarClavija.motorDerechoMas(cuerpos, placaClavija4);
     for (int i = 0; i < 2; i++) {
       registro.DireccionBarra(dirBarra4);
@@ -587,7 +587,7 @@ Tinteros:
       leerPotenciometro = ejecucionDeClavija(1);  //va a la rutina de escribir en los display y trae el valor del potenciometro
       enviarDatoBarra(datoBarra);
       if (leerPotenciometro <= 100) {
-        Serial.print("entro en proteccion");
+        //Serial.print("entro en proteccion");
         controlarClavija.resetflipflop();
       }
     }
@@ -605,7 +605,7 @@ Tinteros:
     goto Inicio;
   }
   if(digitalRead(Boton2) == HIGH){    //Boton menos mutual stting module 
-    Serial.println("Boton 2(Boton Boton + mutual stting module)");
+    //Serial.println("Boton 2(Boton Boton + mutual stting module)");
     moverRegistroBarra(2);
     while (digitalRead(Boton2) == HIGH) {
       retardo50ms();
@@ -614,7 +614,7 @@ Tinteros:
     moverRegistroBarra(4);
   }
   if(digitalRead(Boton1) == HIGH){    //Boton menos mutual stting module 
-    Serial.println("Boton 1(Boton Boton - mutual stting module)");
+    //Serial.println("Boton 1(Boton Boton - mutual stting module)");
     moverRegistroBarra(3);
     while (digitalRead(Boton1) == HIGH) {
       retardo50ms();
@@ -627,7 +627,7 @@ Tinteros:
   direccionControl.imprimirDireccion(2);  //Diereccion para registro circunferencial
     
     if(digitalRead(Boton5) == LOW){  //incrementar
-      Serial.println("Se activa el Registro circunferencial mas");
+      //Serial.println("Se activa el Registro circunferencial mas");
       moverRegistroC(2);
       while(digitalRead(Boton5) == LOW){
         retardo10ms();
@@ -638,7 +638,7 @@ Tinteros:
     }
     
     if(digitalRead(Boton1) == LOW){  //decrementar
-      Serial.println("Se activa el registro circunferencial menos");
+      //Serial.println("Se activa el registro circunferencial menos");
       moverRegistroC(3);
       while(digitalRead(Boton1) == LOW){
         retardo10ms();
@@ -648,7 +648,7 @@ Tinteros:
       moverRegistroC(4);
     }
     if(digitalRead(Boton8) == LOW){  //centrar
-      Serial.println("Se activa el registro circunferencial centrar");
+      //Serial.println("Se activa el registro circunferencial centrar");
       moverRegistroC(1);
       while(digitalRead(Boton8) == LOW){
         retardo50ms();
@@ -661,7 +661,7 @@ Tinteros:
   direccionControl.imprimirDireccion(3);  //Diereccion para registro lateral
 
     if(digitalRead(Boton5) == LOW){  //incrementar
-      Serial.println("Se activa el Registro lateral mas");
+      //Serial.println("Se activa el Registro lateral mas");
       moverRegistroL(2);
       while(digitalRead(Boton5) == LOW){
         valorRegistro = registro.leerTransmisor();
@@ -670,7 +670,7 @@ Tinteros:
       moverRegistroL(0);
     }
     if(digitalRead(Boton1) == LOW){  //decrementar
-      Serial.println("Se activa el registro lateral menos");
+      //Serial.println("Se activa el registro lateral menos");
       moverRegistroL(3);
       while(digitalRead(Boton1) == LOW){
         valorRegistro = registro.leerTransmisor();
@@ -679,7 +679,7 @@ Tinteros:
       moverRegistroL(0);
     }
     if(digitalRead(Boton8) == LOW){  //centrar
-      Serial.println("Se activa el registro lateral centrar");
+      //Serial.println("Se activa el registro lateral centrar");
       moverRegistroL(1);
       while(digitalRead(Boton8) == HIGH){
         valorRegistro = registro.leerTransmisor();
@@ -692,7 +692,7 @@ Tinteros:
 
   if(digitalRead(Boton5) == LOW){  //incrementar
     controlarClavija.posInicial();
-    Serial.println("Boton 5(Boton Boton + fuente de tinta)");
+    //Serial.println("Boton 5(Boton Boton + fuente de tinta)");
     controlarClavija.motorDerechoMas(cuerpos, 0);
     moverRegistroBarra(2);
     while(digitalRead(Boton5) == LOW){
@@ -705,7 +705,7 @@ Tinteros:
   }
   if(digitalRead(Boton1) == LOW){  //decrementar
     controlarClavija.posInicial();
-    Serial.println("Boton 1(Boton Boton - fuente de tinta)");
+    //Serial.println("Boton 1(Boton Boton - fuente de tinta)");
     controlarClavija.motorIzquierdoMenos(cuerpos, 0);
     moverRegistroBarra(3);
     while(digitalRead(Boton1) == LOW){

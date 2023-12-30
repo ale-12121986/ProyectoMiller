@@ -22,10 +22,10 @@ class Direcciones{
   };
   
   // Direcciones de las placas de control
-  const byte Dir0 = 30;//direccion 1
-  const byte Dir1 = 31;//direccion 2
-  const byte Dir2 = 32;//direccion 3
-  const byte Dir3 = 33;//direccion 4
+  const byte Dir0 = 31; //direccion 1  30
+  const byte Dir1 = 30; //direccion 2  32
+  const byte Dir2 = 33; //direccion 3  32
+  const byte Dir3 = 32; //direccion 4  33
   int N = 4;
   int dirControl[4] = { Dir0, Dir1, Dir2, Dir3};
     public:

@@ -1,9 +1,10 @@
+#include "pins_arduino.h"
 #include "Arduino.h"
 class BarridoTinta{
   private:
 
-  const byte barridoMas = 12;
-  const byte barridoMenos = 13;
+  const byte barridoMas = 7;
+  const byte barridoMenos = 6; //13
   
   public:
   void configurar(){
@@ -19,12 +20,12 @@ class BarridoTinta{
       centrarRegistro();
     break;
     case 2:   //subir registro
-      Serial.println("subir");
+      Serial.println("subir +");
       digitalWrite(barridoMas, HIGH);
       digitalWrite(barridoMenos, LOW);
     break;
     case 3:   //bajar registro
-      Serial.println("bajar");
+      Serial.println("bajar -");
       digitalWrite(barridoMas, LOW);
       digitalWrite(barridoMenos, HIGH);
     break;

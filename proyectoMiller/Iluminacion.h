@@ -2,16 +2,16 @@
 class Iluminacion{
   private:
   //direccion de la iluminacion   
-    const byte luz2 = 53;     //cuerpo1
-    const byte luz3 = 47;     //cuerpo3
+    const byte luz2 = 5;     //cuerpo1
+    const byte luz3 = 48;     //cuerpo3
     const byte luz4 = 2;     // Barrido tinta centro
-    const byte luz5 = 48;     //cuerpo4
-    const byte luz6 = 52;     //M1   
-    const byte luz7 = 49;     //M2
-    const byte luz8 = 50;     //Error
-    const byte luz11 = 46;   //cuerpo6
-    const byte luz12 = 45;   //cuerpo5
-    const byte luz16 = 51;   //cuerpo2
+    const byte luz5 = 47;     //cuerpo4
+    const byte luz6 = 51;     //M1   
+    const byte luz7 = 50;     //M2
+    const byte luz8 = 49;     //Error
+    const byte luz11 = 45;   //cuerpo6
+    const byte luz12 = 46;   //cuerpo5
+    const byte luz16 = 52;   //cuerpo2
     const byte luz17 = 3;    //cambio de cuerpo ojo falta programar
     const byte luz18 = 4;    //guardar en memoria ojo falta programar 
     int dirControlIluminacion[12] = {

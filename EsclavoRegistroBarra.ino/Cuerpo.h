@@ -3,11 +3,11 @@
 class Cuerpo{
   private:
   const byte cuerpo1 = 2;   //Pin para activar el Rele cel cuerpo 1
-  const byte cuerpo2 = 3;   //Pin para activar el Rele cel cuerpo 2
-  const byte cuerpo3 = 4;   //Pin para activar el Rele cel cuerpo 3
-  const byte cuerpo4 = 5;   //Pin para activar el Rele cel cuerpo 4
-  const byte cuerpo5 = 6;   //Pin para activar el Rele cel cuerpo 5
-  const byte cuerpo6 = 7;   //Pin para activar el Rele cel cuerpo 6
+  const byte cuerpo2 = 4;   //Pin para activar el Rele cel cuerpo 2
+  const byte cuerpo3 = 5;   //Pin para activar el Rele cel cuerpo 3
+  const byte cuerpo4 = 3;   //Pin para activar el Rele cel cuerpo 4
+  const byte cuerpo5 = 9;   //Pin para activar el Rele cel cuerpo 5
+  const byte cuerpo6 = 8;   //Pin para activar el Rele cel cuerpo 6
   int cuerpoSelec;
   public:
   void configurar(){

@@ -1,4 +1,4 @@
-#include "HardwareSerial.h"
+//#include "HardwareSerial.h"
 #include "Arduino.h"
 class DatosDisplay{
   private:
@@ -18,16 +18,16 @@ class DatosDisplay{
 /*8*/ {0,0,0,1}, 
 /*9*/ {1,0,0,1},
 };  
-    const byte u1 = 37;   //D0.0
-    const byte u2 = 40;   //D0.1
-    const byte u3 = 39;   //D0.2
-    const byte u4 = 38;   //D0.3
-    const byte d1 = 44;   //D0
-    const byte d2 = 42;   //D1
-    const byte d3 = 41;   //D2
-    const byte d4 = 43;   //D3
-    const byte dis1 = 34;
-    const byte dis2 = 35;
+    const byte u1 = 38;   //D0.0  37
+    const byte u2 = 39;   //D0.1  40
+    const byte u3 = 40;   //D0.2  39
+    const byte u4 = 37;   //D0.3  38
+    const byte d1 = 43;   //D0
+    const byte d2 = 41;   //D1  42
+    const byte d3 = 42;   //D2  41
+    const byte d4 = 44;   //D3
+    const byte dis1 = 35;
+    const byte dis2 = 34;
     const byte habilitarDisplay = 36; 
     int N = 4;
     int displayUnidad[4] = {u1, u2, u3, u4};
@@ -35,22 +35,22 @@ class DatosDisplay{
     void selecDisplay(int pines){ // configura los pines para seleccionar que display se va a escribir
       switch (pines) {
         case 1:
-          //Serial.println("display 1");  // Escribe el display 1
+          //Serial.println("display 1 e");  // Escribe el display 1
           digitalWrite(dis1, LOW);
           digitalWrite(dis2, LOW);
           break;
         case 2:
-          //Serial.println("display 2");  // Escribe el display 2
+          //Serial.println("display 2 e");  // Escribe el display 2
           digitalWrite(dis1, HIGH);
           digitalWrite(dis2, LOW);
           break;
         case 3:
-          //Serial.println("display 3");  // Escribe el display 3
+          //Serial.println("display 3 e");  // Escribe el display 3
           digitalWrite(dis1, LOW);
           digitalWrite(dis2, HIGH);
           break;
         case 4:
-          //Serial.println("display 4");  // Escribe el display 4
+          //Serial.println("display 4 a");  // Escribe el display 4
           digitalWrite(dis1, HIGH);
           digitalWrite(dis2, HIGH);
         break;
@@ -59,9 +59,9 @@ class DatosDisplay{
       }
     }
     void imprimirDisplay(int unidad, int decena){
-      Serial.print("valor: ");
+      //Serial.print("valor: ");
       int yy =decena*10 +unidad;
-      Serial.println(yy);
+      //Serial.println(yy);
       for (int i=0; i<4; i++){
         digitalWrite(displayUnidad[i], DIGITOS[unidad][i]);
         digitalWrite(displayDecena[i], DIGITOS[decena][i]);

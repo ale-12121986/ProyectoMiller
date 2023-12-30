@@ -14,8 +14,8 @@ class RegistroCircunferencial{
   // const byte registro4 = A7;    //potenciometro de registro circunferencial del cuerpo 4
   // const byte registro5 = A9;    //potenciometro de registro circunferencial del cuerpo 5
   // const byte registro6 = A11;   //potenciometro de registro circunferencial del cuerpo 6
-  const byte rCirMas = 8;
-  const byte rCirMenos = 9;
+  const byte rCirMas = 12; //8
+  const byte rCirMenos = 13; //9
   int cuerpos = 1;
   int dato;
 

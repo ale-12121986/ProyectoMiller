@@ -1,4 +1,3 @@
-# Writing all output to: D:\Arduino\proyecto Miller\proyectoMiller\pcb\PlacaEsclavo.log
 set pad_wire_necking on
 bus diagonal
 fanout 5
@@ -9,4 +8,3 @@ clean 2
 filter 5
 recorner diagonal
 status_file
-
