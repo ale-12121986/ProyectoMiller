@@ -6,9 +6,9 @@
 class RegistroCircunferencial{
   private:
   const byte registro1 = A1;    //potenciometro de registro circunferencial del cuerpo 1
-  const byte datoA =A3;
-  const byte datoB =A5;
-  const byte datoC =A7;
+  const byte datoA = A3;
+  const byte datoB = A5;
+  const byte datoC = A7;
   // const byte registro2 = A3;    //potenciometro de registro circunferencial del cuerpo 2
   // const byte registro3 = A5;    //potenciometro de registro circunferencial del cuerpo 3
   // const byte registro4 = A7;    //potenciometro de registro circunferencial del cuerpo 4
@@ -61,9 +61,9 @@ class RegistroCircunferencial{
     //Serial.print("Entro en leer Pot ");
     //Serial.println(cuerpo);
     if (cuerpo == 1) {
-      digitalWrite(datoA, LOW);
-      digitalWrite(datoB, LOW);
-      digitalWrite(datoC, LOW);
+      digitalWrite(datoA, HIGH);
+      digitalWrite(datoB, HIGH);
+      digitalWrite(datoC, HIGH);
       delay(1);
       dato = analogRead(registro1);
       //regCirCuerpo1 = map(dato, 0, 1023, 0, 512);
@@ -71,9 +71,9 @@ class RegistroCircunferencial{
       return dato;
     }
     else if (cuerpo == 2) {
-      digitalWrite(datoA, HIGH);
-      digitalWrite(datoB, LOW);
-      digitalWrite(datoC, LOW);
+      digitalWrite(datoA, LOW);
+      digitalWrite(datoB, HIGH);
+      digitalWrite(datoC, HIGH);
       delay(1);
       dato = analogRead(registro1);
       //regCirCuerpo2 = map(dato, 0, 1023, 0, 512);
@@ -81,9 +81,9 @@ class RegistroCircunferencial{
       return dato;
     }
     else if (cuerpo == 3) {
-      digitalWrite(datoA, LOW);
-      digitalWrite(datoB, HIGH);
-      digitalWrite(datoC, LOW);
+      digitalWrite(datoA, HIGH);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, HIGH);
       delay(1);
       dato = analogRead(registro1);
       //regCirCuerpo3 = map(dato, 0, 1023, 0, 512);
@@ -91,9 +91,9 @@ class RegistroCircunferencial{
       return dato;
     }
     else if (cuerpo == 4) {
-      digitalWrite(datoA, HIGH);
-      digitalWrite(datoB, HIGH);
-      digitalWrite(datoC, LOW);
+      digitalWrite(datoA, LOW);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, HIGH);
       delay(1);
       dato = analogRead(registro1);
       //regCirCuerpo4 = map(dato, 0, 1023, 0, 512);
@@ -102,9 +102,9 @@ class RegistroCircunferencial{
       return dato;
     }
     else if (cuerpo == 5) {
-      digitalWrite(datoA, LOW);
-      digitalWrite(datoB, LOW);
-      digitalWrite(datoC, HIGH);
+      digitalWrite(datoA, HIGH);
+      digitalWrite(datoB, HIGH);
+      digitalWrite(datoC, LOW);
       delay(1);
       dato = analogRead(registro1);
       //regCirCuerpo5 = map(dato, 0, 1023, 0, 512);
@@ -112,9 +112,9 @@ class RegistroCircunferencial{
       return dato;
     }
     else if (cuerpo == 6) {
-      digitalWrite(datoA, HIGH);
-      digitalWrite(datoB, LOW);
-      digitalWrite(datoC, HIGH);
+      digitalWrite(datoA, LOW);
+      digitalWrite(datoB, HIGH);
+      digitalWrite(datoC, LOW);
       delay(1);
       dato = analogRead(registro1);
       //regCirCuerpo6 = map(dato, 0, 1023, 0, 512);

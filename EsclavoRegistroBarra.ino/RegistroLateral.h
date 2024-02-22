@@ -4,9 +4,9 @@
 class RegistroLateral{
   private:
   byte lateral1 = A0;   //potenciometro de registro lateral del cuerpo 1
-  byte datoA =A2;
-  byte datoB =A4;
-  byte datoC =A6;
+  const byte datoA = A2;
+  const byte datoB = A4;
+  const byte datoC = A6;
   // byte lateral2 = A2;   //potenciometro de registro lateral del cuerpo 2
   // byte lateral3 = A4;   //potenciometro de registro lateral del cuerpo 3
   // byte lateral4 = A6;   //potenciometro de registro lateral del cuerpo 4
@@ -50,57 +50,58 @@ class RegistroLateral{
     }    
   }
   int leerPotenciometro(int cuerpo){
-    //Serial.println("Entro en leer Pot ");
-    //Serial.print(cuerpo);
+    Serial.println("Entro en leer Pot ");
+    Serial.print(cuerpo);
     if (cuerpo == 1) {
-      digitalWrite(datoA, LOW);
-      digitalWrite(datoB, LOW);
-      digitalWrite(datoC, LOW);
+      digitalWrite(datoA, HIGH);
+      digitalWrite(datoB, HIGH);
+      digitalWrite(datoC, HIGH);
       delay(1);
       dato = analogRead(lateral1);
       Serial.println(dato);        
       return dato;
     }
     else if (cuerpo == 2) {
-      digitalWrite(datoA, HIGH);
-      digitalWrite(datoB, LOW);
-      digitalWrite(datoC, LOW);
+      digitalWrite(datoA, LOW);
+      digitalWrite(datoB, HIGH);
+      digitalWrite(datoC, HIGH);
       delay(1);
       dato = analogRead(lateral1);
       Serial.println(dato);  
       return dato;
     }
     else if (cuerpo == 3) {
-      digitalWrite(datoA, LOW);
-      digitalWrite(datoB, HIGH);
-      digitalWrite(datoC, LOW);
+      digitalWrite(datoA, HIGH);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, HIGH);
       delay(1);
       dato = analogRead(lateral1);
       Serial.println(dato);
       return dato;
     }
     else if (cuerpo == 4) {
-      digitalWrite(datoA, HIGH);
-      digitalWrite(datoB, HIGH);
-      digitalWrite(datoC, LOW);
+      digitalWrite(datoA, LOW);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, HIGH);
       delay(1);
       dato = analogRead(lateral1);
       Serial.println(dato);
       return dato;
     }
     else if (cuerpo == 5) {
-      digitalWrite(datoA, LOW);
-      digitalWrite(datoB, LOW);
-      digitalWrite(datoC, HIGH);
+      digitalWrite(datoA, HIGH);
+      digitalWrite(datoB, HIGH);
+      digitalWrite(datoC, LOW);
       delay(1);
       dato = analogRead(lateral1);
       Serial.println(dato); 
       return dato;
     }
     else if (cuerpo == 6) {
-      digitalWrite(datoA, HIGH);
-      digitalWrite(datoB, LOW);
-      digitalWrite(datoC, HIGH);
+      Serial.println("Barra laterial cuerpo 6 multi");
+      digitalWrite(datoA, LOW);
+      digitalWrite(datoB, HIGH);
+      digitalWrite(datoC, LOW);
       dato = analogRead(lateral1);
       //regLatCuerpo6 = map(dato, 0, 1023, -99, 99);
       Serial.println(dato);        

@@ -2,6 +2,7 @@
 class Iluminacion{
   private:
   //direccion de la iluminacion   
+    const byte luzxx = 6;
     const byte luz2 = 5;     //cuerpo1
     const byte luz3 = 48;     //cuerpo3
     const byte luz4 = 2;     // Barrido tinta centro
@@ -14,21 +15,22 @@ class Iluminacion{
     const byte luz16 = 52;   //cuerpo2
     const byte luz17 = 3;    //cambio de cuerpo ojo falta programar
     const byte luz18 = 4;    //guardar en memoria ojo falta programar 
-    int dirControlIluminacion[12] = {
+    int dirControlIluminacion[13] = {
       luz2, luz3, luz4, luz5, luz6, luz7, luz8, luz11,
-      luz12, luz16 ,luz17 ,luz18
+      luz12, luz16 ,luz17 ,luz18, luzxx
     };
   
   public:
   void configurar(){
-    for(int i=0; i<=11;i++){
+    for(int i=0; i<=12;i++){
       pinMode(dirControlIluminacion[i], OUTPUT);
       digitalWrite(dirControlIluminacion[i], HIGH);
     }         
   }
   void encenderCuerpo(int cuerpoActivado){
     switch (cuerpoActivado) {
-      case 0:      
+      case 0:
+        digitalWrite(luzxx, HIGH);      
         digitalWrite(luz2, HIGH);
         digitalWrite(luz16, HIGH);
         digitalWrite(luz3, HIGH);        
@@ -38,8 +40,10 @@ class Iluminacion{
         digitalWrite(luz11, HIGH); 
         digitalWrite(luz17, HIGH);
         digitalWrite(luz18, HIGH); 
+
       break;
       case 1: // enciede luz cuerpo 1
+        digitalWrite(luzxx, LOW);
         digitalWrite(luz2, LOW);
         digitalWrite(luz16, HIGH);
         digitalWrite(luz3, HIGH);        
@@ -48,6 +52,7 @@ class Iluminacion{
         digitalWrite(luz11, HIGH);  
         break;    
       case 2: // enciede luz cuerpo 2
+        digitalWrite(luzxx, HIGH);
         digitalWrite(luz2, HIGH);
         digitalWrite(luz16, LOW);
         digitalWrite(luz3, HIGH);        
@@ -56,6 +61,7 @@ class Iluminacion{
         digitalWrite(luz11, HIGH);  
         break;
       case 3: // enciede luz cuerpo 3
+        digitalWrite(luzxx, HIGH);
         digitalWrite(luz2, HIGH);
         digitalWrite(luz16, HIGH);
         digitalWrite(luz3, LOW);        
@@ -64,6 +70,7 @@ class Iluminacion{
         digitalWrite(luz11, HIGH);  
         break;
       case 4: // enciede luz cuerpo 4
+        digitalWrite(luzxx, HIGH);
         digitalWrite(luz2, HIGH);
         digitalWrite(luz16, HIGH);
         digitalWrite(luz3, HIGH);        
@@ -72,6 +79,7 @@ class Iluminacion{
         digitalWrite(luz11, HIGH);  
         break;              
       case 5: // enciede luz cuerpo 5
+        digitalWrite(luzxx, HIGH);
         digitalWrite(luz2, HIGH);
         digitalWrite(luz16, HIGH);
         digitalWrite(luz3, HIGH);        
@@ -80,6 +88,7 @@ class Iluminacion{
         digitalWrite(luz11, HIGH);  
         break;
       case 6: // enciede luz cuerpo 6
+        digitalWrite(luzxx, HIGH);
         digitalWrite(luz2, HIGH);
         digitalWrite(luz16, HIGH);
         digitalWrite(luz3, HIGH);        
@@ -88,6 +97,7 @@ class Iluminacion{
         digitalWrite(luz11, LOW);  
         break;    
          case 7: // enciede luz cambio de cuerpo
+        digitalWrite(luzxx, HIGH);
         digitalWrite(luz2, HIGH);
         digitalWrite(luz16, HIGH);
         digitalWrite(luz3, HIGH);        
@@ -98,6 +108,7 @@ class Iluminacion{
         digitalWrite(luz18, HIGH);  
         break;    
         case 8: // enciede luz guardar en memoria
+        digitalWrite(luzxx, HIGH);
         digitalWrite(luz2, HIGH);
         digitalWrite(luz16, HIGH);
         digitalWrite(luz3, HIGH);        
