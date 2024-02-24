@@ -57,7 +57,7 @@ void recibeDato(int howMany){
     cadena[nDato] = dato;
     nDato++;
     if(strcmp(cadena,"Cue") == 0){ 
-      Serial.print("entro");       
+      //Serial.print("entro");       
       prueba = "CUERPO";
     } 
     if(strcmp(cadena,"cir") == 0){
@@ -109,7 +109,7 @@ void loop() {
       claseCuerpo.seleccionarCuerpo(cuerpo);
     }
     if (prueba.equals("REGC")) {
-      Serial.println("entro en registro circunferencial"); 
+      //Serial.println("entro en registro circunferencial"); 
       acRegCir = true;  //leer valores del registro circunferencial activado
       acRegLat = false; //leer valores del registro lateral desactivado
       bandera = false;
@@ -117,7 +117,7 @@ void loop() {
       registroCircunferencial.moverRegistro(cuerpo);
     }
     if (prueba.equals("REGL")) {
-      Serial.println("entro en registro lateral");
+      //Serial.println("entro en registro lateral");
       acRegCir = false;  //leer valores del registro circunferencial desactivado
       acRegLat = true;  //leer valores del registro circunferencial activado
       bandera = false;

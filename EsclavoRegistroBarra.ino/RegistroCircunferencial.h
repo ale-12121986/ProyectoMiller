@@ -39,17 +39,17 @@ class RegistroCircunferencial{
       centrarRegistro();
     break;
     case 2:   //subir registro
-      Serial.println("subir");
+      //Serial.println("subir");
       digitalWrite(rCirMas, HIGH);
       digitalWrite(rCirMenos, LOW);
     break;
     case 3:   //bajar registro
-      Serial.println("bajar");
+      //Serial.println("bajar");
       digitalWrite(rCirMas, LOW);
       digitalWrite(rCirMenos, HIGH);
     break;
     case 4:   //descativar
-      Serial.println("parar");
+      //Serial.println("parar");
       digitalWrite(rCirMas, LOW);
       digitalWrite(rCirMenos, LOW);
     break;
@@ -117,7 +117,7 @@ class RegistroCircunferencial{
       delay(1);
       dato = analogRead(registro1);
       //int regCirCuerpo6 = map(dato, 0, 1023, -90, 90);
-      //Serial.println(regCirCuerpo6);        
+      Serial.println("VER");        
       return dato;
     }
   }
