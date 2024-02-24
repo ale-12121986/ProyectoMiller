@@ -30,9 +30,11 @@ void requestEvent() {
   if (contador == 1) {
     if (acRegCir == true) { //entro a leer los valores del registro circunferencial
       valorTransmisor = registroCircunferencial.leerPotenciometro(claseCuerpo.cuerpo());
+      Serial.println("envio el dato circunferencial");
     }
     if (acRegLat == true) { //entro a leer los valores del registro lateral
       valorTransmisor = registroLateral.leerPotenciometro(claseCuerpo.cuerpo());
+      Serial.println("envio el dato lateral");
     }    
     int valor = valorTransmisor;
     variable2 = String(valor);

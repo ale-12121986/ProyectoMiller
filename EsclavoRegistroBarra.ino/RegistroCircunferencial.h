@@ -32,8 +32,8 @@ class RegistroCircunferencial{
   }
 
   void moverRegistro(int valor){
-    Serial.print("entro a mover registro ");
-    Serial.print(valor);
+    //Serial.print("entro a mover registro ");
+    //Serial.print(valor);
     switch (valor) {   
     case 1:   //centrar registro
       centrarRegistro();
@@ -96,9 +96,8 @@ class RegistroCircunferencial{
       digitalWrite(datoC, HIGH);
       delay(1);
       dato = analogRead(registro1);
-      //regCirCuerpo4 = map(dato, 0, 1023, 0, 512);
-      Serial.println(dato);
-                   
+      //int regCirCuerpo4 = map(dato, 0, 1023, -90, 90);
+      Serial.println(dato); 
       return dato;
     }
     else if (cuerpo == 5) {
@@ -107,7 +106,7 @@ class RegistroCircunferencial{
       digitalWrite(datoC, LOW);
       delay(1);
       dato = analogRead(registro1);
-      //regCirCuerpo5 = map(dato, 0, 1023, 0, 512);
+      //int regCirCuerpo5 = map(dato, 0, 1023, -90, 90);
       Serial.println(dato);        
       return dato;
     }
@@ -117,8 +116,8 @@ class RegistroCircunferencial{
       digitalWrite(datoC, LOW);
       delay(1);
       dato = analogRead(registro1);
-      //regCirCuerpo6 = map(dato, 0, 1023, 0, 512);
-      Serial.println(dato);        
+      //int regCirCuerpo6 = map(dato, 0, 1023, -90, 90);
+      //Serial.println(regCirCuerpo6);        
       return dato;
     }
   }
