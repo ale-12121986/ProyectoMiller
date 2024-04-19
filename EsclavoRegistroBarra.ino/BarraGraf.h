@@ -105,18 +105,18 @@ class BarraGraf{
     Serial.println(valor);
     for (int i = 0; i < 6; i++){
         digitalWrite(direccionPuerto[i], datoDirecciones[valor][i]);
-        Serial.print(datoDirecciones[valor][i]);
+        //Serial.print(datoDirecciones[valor][i]);
       }
   }
     
   void imprimir(int valor){
     if(valor <= 50){
       y = map(valor, 0, 50, 0, 16);
-      Serial.print("entro el primer grupo de leds y encendio: ");
-      Serial.println(y);    
+      //Serial.print("entro el primer grupo de leds y encendio: ");
+      //Serial.println(y);    
       for (int i = 0; i<16; i++) {
         digitalWrite(datos[i], valortintero[y][i]);
-        Serial.print(valortintero[y][i]);
+        //Serial.print(valortintero[y][i]);
         if(y<=16){
           habilitarDatoBajo();
         }
@@ -127,13 +127,13 @@ class BarraGraf{
     }
     //prueba
     if(valor > 50 ){
-      Serial.print("entro el segundo grupo de leds y encendio: ");
+      //Serial.print("entro el segundo grupo de leds y encendio: ");
       valor = valor - 50;
       y = map(valor, 0, 50, 0, 16);
       Serial.println(y);
       for (int i = 0; i < 16; i++) {
         digitalWrite(datos[i], valortintero[y][i]);
-        Serial.print(valortintero[y][i]);
+        //Serial.print(valortintero[y][i]);
         if(y<=16){
           habilitarDatoAlto();
         }

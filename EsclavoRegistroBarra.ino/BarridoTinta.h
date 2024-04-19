@@ -13,24 +13,24 @@ class BarridoTinta{
   }
 
   void moverRegistro(int valor){
-    Serial.print("entro a mover barrido tinta ");
-    Serial.print(valor);
+    //Serial.print("entro a mover barrido tinta ");
+    //Serial.print(valor);
     switch (valor) {   
     case 1:   //centrar registro
       centrarRegistro();
     break;
     case 2:   //subir registro
-      Serial.println("subir +");
+      //Serial.println("subir +");
       digitalWrite(barridoMas, HIGH);
       digitalWrite(barridoMenos, LOW);
     break;
     case 3:   //bajar registro
-      Serial.println("bajar -");
+      //Serial.println("bajar -");
       digitalWrite(barridoMas, LOW);
       digitalWrite(barridoMenos, HIGH);
     break;
     case 4:   //descativar
-      Serial.println("parar");
+      //Serial.println("parar");
       digitalWrite(barridoMas, LOW);
       digitalWrite(barridoMenos, LOW);
     break;

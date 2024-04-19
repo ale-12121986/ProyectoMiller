@@ -36,12 +36,12 @@ class RegistroLateral{
     case 1:   //centrar registro
     break;
     case 2:   //subir registro
-      Serial.println("sube");
+      //Serial.println("sube");
       digitalWrite(registroLateralMas, HIGH);
       digitalWrite(registroLateralMenos, LOW);
     break;
     case 3:   //bajar registro
-      Serial.println("baja");
+      //Serial.println("baja");
       digitalWrite(registroLateralMas, LOW);
       digitalWrite(registroLateralMenos, HIGH);
     break;
@@ -50,15 +50,18 @@ class RegistroLateral{
     }    
   }
   int leerPotenciometro(int cuerpo){
-    Serial.println("Entro en leer Pot ");
-    Serial.print(cuerpo);
+    //Serial.println("Entro en leer Pot ");
+    //Serial.print(cuerpo);
     if (cuerpo == 1) {
       digitalWrite(datoA, HIGH);
       digitalWrite(datoB, HIGH);
       digitalWrite(datoC, HIGH);
       delay(1);
       dato = analogRead(lateral1);
-      Serial.println(dato);        
+      //Serial.println(dato);
+      if (dato<= 200 || dato >= 900) {
+      moverRegistro(0);
+      }      
       return dato;
     }
     else if (cuerpo == 2) {
@@ -67,7 +70,10 @@ class RegistroLateral{
       digitalWrite(datoC, HIGH);
       delay(1);
       dato = analogRead(lateral1);
-      Serial.println(dato);  
+      //Serial.println(dato);
+      if (dato<= 200 || dato >= 900) {
+      moverRegistro(0);
+      }  
       return dato;
     }
     else if (cuerpo == 3) {
@@ -76,7 +82,10 @@ class RegistroLateral{
       digitalWrite(datoC, HIGH);
       delay(1);
       dato = analogRead(lateral1);
-      Serial.println(dato);
+      //Serial.println(dato);
+      if (dato<= 200 || dato >= 900) {
+      moverRegistro(0);
+      }
       return dato;
     }
     else if (cuerpo == 4) {
@@ -85,7 +94,10 @@ class RegistroLateral{
       digitalWrite(datoC, HIGH);
       delay(1);
       dato = analogRead(lateral1);
-      Serial.println(dato);
+      //Serial.println(dato);
+      if (dato<= 200 || dato >= 900) {
+      moverRegistro(0);
+      }
       return dato;
     }
     else if (cuerpo == 5) {
@@ -94,7 +106,10 @@ class RegistroLateral{
       digitalWrite(datoC, LOW);
       delay(1);
       dato = analogRead(lateral1);
-      Serial.println(dato); 
+      //Serial.println(dato);
+      if (dato<= 200 || dato >= 900) {
+      moverRegistro(0);
+      } 
       return dato;
     }
     else if (cuerpo == 6) {
@@ -104,7 +119,10 @@ class RegistroLateral{
       digitalWrite(datoC, LOW);
       dato = analogRead(lateral1);
       //regLatCuerpo6 = map(dato, 0, 1023, -99, 99);
-      Serial.println(dato);        
+      //Serial.println(dato);
+      if (dato<= 200 || dato >= 900) {
+      moverRegistro(0);
+      }      
       return dato;
     }
   }

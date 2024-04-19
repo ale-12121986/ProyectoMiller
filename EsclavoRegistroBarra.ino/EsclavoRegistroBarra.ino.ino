@@ -10,7 +10,7 @@ char cadena[4];
 String prueba; 
 char leerTransmisorCircunferencial[] = "TransmisorC";
 char leerTransmisorLateral[] = "TransmisorL"; 
-char dato = 0;
+char dato;
 int cuerpo, contador = 0;
 int valorTransmisor;
 bool bandera = false ;
@@ -30,11 +30,11 @@ void requestEvent() {
   if (contador == 1) {
     if (acRegCir == true) { //entro a leer los valores del registro circunferencial
       valorTransmisor = registroCircunferencial.leerPotenciometro(claseCuerpo.cuerpo());
-      Serial.println("envio el dato circunferencial");
+      //Serial.println("envio el dato circunferencial");
     }
     if (acRegLat == true) { //entro a leer los valores del registro lateral
       valorTransmisor = registroLateral.leerPotenciometro(claseCuerpo.cuerpo());
-      Serial.println("envio el dato lateral");
+      //Serial.println("envio el dato lateral");
     }    
     int valor = valorTransmisor;
     variable2 = String(valor);
@@ -49,16 +49,16 @@ void requestEvent() {
 void recibeDato(int howMany){
   //Serial.println("entro en sub rutina");
   nDato = 0;
-  strcpy(dato, "");
-  strcpy(cadena, "");
+  //strcpy(dato, "");
+  //strcpy(cadena, "");
   while (1 < Wire.available()) {
     dato = Wire.read();
     //Serial.print(dato);
     cadena[nDato] = dato;
     nDato++;
     if(strcmp(cadena,"Cue") == 0){ 
-      //Serial.print("entro");       
-      prueba = "CUERPO";
+      Serial.print("entro a cuerpo");       
+      prueba = "CUER";
     } 
     if(strcmp(cadena,"cir") == 0){
       prueba = "REGC";
@@ -76,11 +76,11 @@ void recibeDato(int howMany){
       prueba = "BBT";
     }
   }
-  //strcpy(cadena, "");
+  strcpy(cadena, "");
   //cuerpo = int(cadena[nDato-1]);
   cuerpo = Wire.read();
-  Serial.println(cadena);
-  Serial.println(cuerpo); 
+  //Serial.println(cadena);
+  //Serial.println(cuerpo); 
   bandera = true;
 }
 void setup() {
@@ -102,10 +102,12 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   if (bandera) {
-    if (prueba.equals("CUERPO")) {
-      Serial.println("entro en cambios de cuerpos");
-      delay(5);
+    if (prueba.equals("CUER")) {
+      Serial.println("entro en cambios de cuerpos"+ cuerpo);
+      delay(10);
       bandera = false;
+      claseCuerpo.seleccionarCuerpo(cuerpo);
+      delay(10);
       claseCuerpo.seleccionarCuerpo(cuerpo);
     }
     if (prueba.equals("REGC")) {
@@ -126,9 +128,9 @@ void loop() {
       registroLateral.moverRegistro(cuerpo);
     }
     if (prueba.equals("BGF")) {
-      Serial.println("entro en la dir de barra ");
+ //     Serial.println("entro en la dir de barra ");
       //Serial.print(cuerpo);
-      barraGRaf.direccionar(cuerpo);
+      //barraGRaf.direccionar(cuerpo);
       
     }
     if(prueba.equals("BGV")){
@@ -136,7 +138,7 @@ void loop() {
       barraGRaf.imprimir(cuerpo);
     }    
     if(prueba.equals("BBT")){
-      Serial.println("entro en elcuerpo de barrido tinta mutua");
+   //   Serial.println("entro en elcuerpo de barrido tinta mutua");
       barridoTinta.moverRegistro(cuerpo);
     }
     prueba = "";

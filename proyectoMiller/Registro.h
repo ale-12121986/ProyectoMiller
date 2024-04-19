@@ -26,6 +26,7 @@ class Registro{
     Wire.beginTransmission(2); // transmit to devi 
     Wire.write("lat");
     registroDeLectura = "lateral";
+    delay(1);
     Wire.write(valor);
     Wire.endTransmission();    // stop transmitting            
   }
@@ -33,6 +34,7 @@ class Registro{
     Wire.beginTransmission(2); // transmit to devi
     Wire.write("cir");
     registroDeLectura = "circunferencial";
+    delay(1);
     Wire.write(valor);
     Wire.endTransmission();
 
@@ -63,46 +65,16 @@ class Registro{
     return cadenas;
 }
   void activarCuerpos(int cuerpos){
-    //Serial.print("envia por i2c");
+    Serial.print("valor del cuerpo");
+    Serial.println(cuerpos);
     cuerpo = cuerpos;
     
     Wire.beginTransmission(2); // transmit to devi        
     Wire.write("Cue");
-    //Wire.endTransmission();
-    switch (cuerpos) {  // se va activar el relay de los cuerpos
-    case 1:
-      //Wire.beginTransmission(2); // transmit to devi 
-      Wire.write(cuerpos);              // sends one byte
-      Wire.endTransmission();    // stop transmitting
-    break;
-    case 2:
-      //Wire.beginTransmission(2); // transmit to devi 
-      Wire.write(cuerpos);              // sends one byte
-      Wire.endTransmission();    // stop transmitting    
-    break;
-    case 3:
-    //Wire.beginTransmission(2); // transmit to devi 
-      Wire.write(cuerpos);              // sends one byte
-      Wire.endTransmission();    // stop transmitting    
-    break;
-    case 4:
-    //Wire.beginTransmission(2); // transmit to devi 
-      Wire.write(cuerpos);              // sends one byte
-      Wire.endTransmission();    // stop transmitting    
-    break;
-    case 5:
-    //Wire.beginTransmission(2); // transmit to devi 
-      Wire.write(cuerpos);              // sends one byte
-      Wire.endTransmission();    // stop transmitting    
-    break;
-    case 6:
-    //Wire.beginTransmission(2); // transmit to devi 
-      Wire.write(cuerpos);              // sends one byte
-      Wire.endTransmission();    // stop transmitting    
-    break;
-    default:
-    break;   
-    }        
+    delay(3);
+    Wire.write(cuerpos);              // sends one byte
+    Wire.endTransmission();    // stop transmitting
+            
   }
   void DireccionBarra(int direccion){
       Wire.beginTransmission(2); // transmit to devi        
