@@ -71,7 +71,7 @@ class Registro{
     
     Wire.beginTransmission(2); // transmit to devi        
     Wire.write("Cue");
-    delay(3);
+    delay(2);
     Wire.write(cuerpos);              // sends one byte
     Wire.endTransmission();    // stop transmitting
             
@@ -79,25 +79,25 @@ class Registro{
   void DireccionBarra(int direccion){
       Wire.beginTransmission(2); // transmit to devi        
       Wire.write("bgf");   
-      delay(1);
+      delay(2);
       Wire.write(direccion);              // sends one byte
-      delay(1);
+      delay(2);
       Wire.endTransmission();
     }
   void ValorBarra(int valor){
     Wire.beginTransmission(2); // transmit to devi        
       Wire.write("bgv");   
-      delay(1);
+      delay(2);
       Wire.write(valor);              // sends one byte
-      delay(1);
+      delay(2);
       Wire.endTransmission();
   }
   void BarridoTinta(int valor){
     Wire.beginTransmission(2); // transmit to devi        
       Wire.write("bbt");   
-      delay(1);
+      delay(2);
       Wire.write(valor);              // sends one byte
-      delay(1);
+      delay(2);
       Wire.endTransmission();
   }
 };

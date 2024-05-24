@@ -41,7 +41,7 @@ int ejecucionDeClavija(int posicion) {
   valor1 = analogRead(pot);
   delay(5);
   leerDato(valor1);
-  //Serial.println(valor1);
+  Serial.println(valor1);
   datosDisplay.enviarDato(Decena, Centena, posicion);
   return valor1;
 }
@@ -741,7 +741,7 @@ Tinteros:
       leerPotenciometro = ejecucionDeClavija(1);
     }
     moverRegistroBarra(4);
-    //moverRegistroBarra(4);
+    moverRegistroBarra(4);
     controlarClavija.resetflipflop();
     retardo10ms();
   }
@@ -755,7 +755,7 @@ Tinteros:
       leerPotenciometro = ejecucionDeClavija(1);
     }
     moverRegistroBarra(4);
-    //moverRegistroBarra(4);
+    moverRegistroBarra(4);
     controlarClavija.resetflipflop();
     retardo10ms();
   }

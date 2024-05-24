@@ -30,71 +30,71 @@ class Iluminacion{
   void encenderCuerpo(int cuerpoActivado){
     switch (cuerpoActivado) {
       case 0:
-        digitalWrite(luzxx, HIGH);      
-        digitalWrite(luz2, HIGH);
-        digitalWrite(luz16, HIGH);
-        digitalWrite(luz3, HIGH);        
-        digitalWrite(luz5, HIGH);
-        digitalWrite(luz12, HIGH);
+        digitalWrite(luzxx, LOW);      
+        digitalWrite(luz2, LOW);
+        digitalWrite(luz16, LOW);
+        digitalWrite(luz3, LOW);        
+        digitalWrite(luz5, LOW);
+        digitalWrite(luz12, LOW);
         //digitalWrite(luz7, HIGH);
-        digitalWrite(luz11, HIGH); 
-        digitalWrite(luz17, HIGH);
-        digitalWrite(luz18, HIGH); 
+        digitalWrite(luz11, LOW); 
+        digitalWrite(luz17, LOW);
+        digitalWrite(luz18, LOW); 
 
       break;
       case 1: // enciede luz cuerpo 1
-        digitalWrite(luzxx, LOW);
-        digitalWrite(luz2, LOW);
-        digitalWrite(luz16, HIGH);
-        digitalWrite(luz3, HIGH);        
-        digitalWrite(luz5, HIGH);
-        digitalWrite(luz12, HIGH);
-        digitalWrite(luz11, HIGH);  
-        break;    
-      case 2: // enciede luz cuerpo 2
         digitalWrite(luzxx, HIGH);
         digitalWrite(luz2, HIGH);
         digitalWrite(luz16, LOW);
-        digitalWrite(luz3, HIGH);        
-        digitalWrite(luz5, HIGH);
-        digitalWrite(luz12, HIGH);
-        digitalWrite(luz11, HIGH);  
-        break;
-      case 3: // enciede luz cuerpo 3
-        digitalWrite(luzxx, HIGH);
-        digitalWrite(luz2, HIGH);
+        digitalWrite(luz5, LOW);
+        digitalWrite(luz3, LOW);        
+        digitalWrite(luz12, LOW);
+        digitalWrite(luz11, LOW);  
+        break;    
+      case 2: // enciede luz cuerpo 2
+        digitalWrite(luzxx, LOW);
+        digitalWrite(luz2, LOW);
         digitalWrite(luz16, HIGH);
         digitalWrite(luz3, LOW);        
-        digitalWrite(luz5, HIGH);
-        digitalWrite(luz12, HIGH);
-        digitalWrite(luz11, HIGH);  
+        digitalWrite(luz5, LOW);
+        digitalWrite(luz12, LOW);
+        digitalWrite(luz11, LOW);  
         break;
-      case 4: // enciede luz cuerpo 4
-        digitalWrite(luzxx, HIGH);
-        digitalWrite(luz2, HIGH);
-        digitalWrite(luz16, HIGH);
+      case 3: // enciede luz cuerpo 3
+        digitalWrite(luzxx, LOW);
+        digitalWrite(luz2, LOW);
+        digitalWrite(luz16, LOW);
         digitalWrite(luz3, HIGH);        
         digitalWrite(luz5, LOW);
-        digitalWrite(luz12, HIGH);
-        digitalWrite(luz11, HIGH);  
-        break;              
-      case 5: // enciede luz cuerpo 5
-        digitalWrite(luzxx, HIGH);
-        digitalWrite(luz2, HIGH);
-        digitalWrite(luz16, HIGH);
-        digitalWrite(luz3, HIGH);        
+        digitalWrite(luz12, LOW);
+        digitalWrite(luz11, LOW);  
+        break;
+      case 4: // enciede luz cuerpo 4
+        digitalWrite(luzxx, LOW);
+        digitalWrite(luz2, LOW);
+        digitalWrite(luz16, LOW);
+        digitalWrite(luz3, LOW);        
         digitalWrite(luz5, HIGH);
         digitalWrite(luz12, LOW);
-        digitalWrite(luz11, HIGH);  
-        break;
-      case 6: // enciede luz cuerpo 6
-        digitalWrite(luzxx, HIGH);
-        digitalWrite(luz2, HIGH);
-        digitalWrite(luz16, HIGH);
-        digitalWrite(luz3, HIGH);        
-        digitalWrite(luz5, HIGH);
+        digitalWrite(luz11, LOW);  
+        break;              
+      case 5: // enciede luz cuerpo 5
+        digitalWrite(luzxx, LOW);
+        digitalWrite(luz2, LOW);
+        digitalWrite(luz16, LOW);
+        digitalWrite(luz3, LOW);        
+        digitalWrite(luz5, LOW);
         digitalWrite(luz12, HIGH);
         digitalWrite(luz11, LOW);  
+        break;
+      case 6: // enciede luz cuerpo 6
+        digitalWrite(luzxx, LOW);
+        digitalWrite(luz2, LOW);
+        digitalWrite(luz16, LOW);
+        digitalWrite(luz3, LOW);        
+        digitalWrite(luz5, LOW);
+        digitalWrite(luz12, LOW);
+        digitalWrite(luz11, HIGH);  
         break;    
          case 7: // enciede luz cambio de cuerpo
         digitalWrite(luzxx, HIGH);
