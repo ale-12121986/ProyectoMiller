@@ -1,0 +1,46 @@
+LABCENTER PROTEUS TOOL INFORMATION FILE
+=======================================
+
+In case of difficulty, please e-mail support@labcenter.co.uk
+
+Tool set up for Proteus layout 'PlacaMaestro4.pdsprj'.
+CADCAM generated at 20:03:24 on viernes, 24 de mayo de 2024.
+
+File List
+---------
+Bottom Copper           : PlacaMaestro4BOTTON2 - CADCAM Bottom Copper.GBR
+Netlist                 : PlacaMaestro4BOTTON2 - CADCAM Netlist.IPC
+
+Photoplotter Setup
+------------------
+Format: X2, ASCII, 4.3, metric, absolute, eob=*, LZO
+Bounds: -80mm -50mm 80mm 50mm
+Notes:  D=Diameter, S=Side, W=Width, H=Height, C=Chamfer, I=Index
+
+D10	CIRCLE  D=0.508mm                                                         DRAW  Conductor
+D11	CIRCLE  D=0.635mm                                                         DRAW  Conductor
+D12	CIRCLE  D=1.778mm                                                         FLASH ViaPad
+D13	CIRCLE  D=1.524mm                                                         FLASH ViaPad
+D14	SQUARE  S=2.286mm                                                         FLASH ComponentPad
+D15	CIRCLE  D=2.286mm                                                         FLASH ComponentPad
+D16	CIRCLE  D=3.048mm                                                         FLASH ComponentPad
+D17	SQUARE  S=2.032mm                                                         FLASH ComponentPad
+D18	CIRCLE  D=2.032mm                                                         FLASH ComponentPad
+D19	CIRCLE  D=1.524mm                                                         FLASH ComponentPad
+D70	CIRCLE  D=1.524mm                                                         FLASH OtherPad,Unknown
+D71	CIRCLE  D=0.203mm                                                         DRAW  Profile
+
+Layer Stackup
+-------------
+Top Solder Resist        : 0.01mm     Resist
+Top Copper               : 0.018mm    Copper
+Prepreg                  : 0.36mm     FR4
+Inner  1                 : 0.035mm    Copper
+Core                     : 0.71mm     FR4
+Inner  2                 : 0.035mm    Copper
+Prepreg                  : 0.36mm     FR4
+Bottom Copper            : 0.018mm    Copper
+Bottom Solder Resist     : 0.01mm     Resist
+
+
+[END OF FILE]
