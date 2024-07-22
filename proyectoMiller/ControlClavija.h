@@ -88,8 +88,8 @@ class ControlClavija{
   }
   void motorDerechoMas(int cuerpo, int placa){
     imprimirDirClavija(cuerpo, placa);
-    digitalWrite(j, HIGH);//LOW
     digitalWrite(h, HIGH);//LOW
+    digitalWrite(j, HIGH);//LOW
     digitalWrite(i, LOW);//HIGH
     digitalWrite(k, HIGH);//LOW
     digitalWrite(l, LOW);//HIGH
@@ -98,8 +98,8 @@ class ControlClavija{
   }
   void motorDerechoMenos(int cuerpo ,int placa){
     imprimirDirClavija(cuerpo, placa);
-    digitalWrite(j, HIGH);//LOW
     digitalWrite(h, HIGH);//LOW
+    digitalWrite(j, HIGH);//LOW
     digitalWrite(i, HIGH);//LOW
     digitalWrite(k, LOW);//HIGH
     digitalWrite(l, LOW);//HIGH

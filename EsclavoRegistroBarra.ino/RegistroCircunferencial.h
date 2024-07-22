@@ -61,9 +61,9 @@ class RegistroCircunferencial{
     //Serial.print("Entro en leer Pot ");
     //Serial.println(cuerpo);
     if (cuerpo == 1) {
-      digitalWrite(datoA, HIGH);
-      digitalWrite(datoB, HIGH);
-      digitalWrite(datoC, HIGH);
+      digitalWrite(datoA, LOW);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, LOW);
       delay(1);
       dato = analogRead(registro1);
       //regCirCuerpo1 = map(dato, 0, 1023, 0, 512);
@@ -74,9 +74,9 @@ class RegistroCircunferencial{
       return dato;
     }
     else if (cuerpo == 2) {
-      digitalWrite(datoA, LOW);
-      digitalWrite(datoB, HIGH);
-      digitalWrite(datoC, HIGH);
+      digitalWrite(datoA, HIGH);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, LOW);
       delay(1);
       dato = analogRead(registro1);
       //regCirCuerpo2 = map(dato, 0, 1023, 0, 512);
@@ -87,9 +87,9 @@ class RegistroCircunferencial{
       return dato;
     }
     else if (cuerpo == 3) {
-      digitalWrite(datoA, HIGH);
-      digitalWrite(datoB, LOW);
-      digitalWrite(datoC, HIGH);
+      digitalWrite(datoA, LOW);
+      digitalWrite(datoB, HIGH);
+      digitalWrite(datoC, LOW);
       delay(1);
       dato = analogRead(registro1);
       //regCirCuerpo3 = map(dato, 0, 1023, 0, 512);
@@ -100,9 +100,9 @@ class RegistroCircunferencial{
       return dato;
     }
     else if (cuerpo == 4) {
-      digitalWrite(datoA, LOW);
-      digitalWrite(datoB, LOW);
-      digitalWrite(datoC, HIGH);
+      digitalWrite(datoA, HIGH);
+      digitalWrite(datoB, HIGH);
+      digitalWrite(datoC, LOW);
       delay(1);
       dato = analogRead(registro1);
       //int regCirCuerpo4 = map(dato, 0, 1023, -90, 90);
@@ -113,9 +113,9 @@ class RegistroCircunferencial{
       return dato;
     }
     else if (cuerpo == 5) {
-      digitalWrite(datoA, HIGH);
-      digitalWrite(datoB, HIGH);
-      digitalWrite(datoC, LOW);
+      digitalWrite(datoA, LOW);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, HIGH);
       delay(1);
       dato = analogRead(registro1);
       //int regCirCuerpo5 = map(dato, 0, 1023, -90, 90);
@@ -126,9 +126,9 @@ class RegistroCircunferencial{
       return dato;
     }
     else if (cuerpo == 6) {
-      digitalWrite(datoA, LOW);
-      digitalWrite(datoB, HIGH);
-      digitalWrite(datoC, LOW);
+      digitalWrite(datoA, HIGH);
+      digitalWrite(datoB, LOW);
+      digitalWrite(datoC, HIGH);
       delay(1);
       dato = analogRead(registro1);
       //Serial.println(dato);

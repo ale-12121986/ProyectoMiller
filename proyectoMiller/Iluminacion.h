@@ -36,7 +36,7 @@ class Iluminacion{
         digitalWrite(luz3, LOW);        
         digitalWrite(luz5, LOW);
         digitalWrite(luz12, LOW);
-        //digitalWrite(luz7, HIGH);
+        digitalWrite(luz7, LOW);
         digitalWrite(luz11, LOW); 
         digitalWrite(luz17, LOW);
         digitalWrite(luz18, LOW); 
@@ -128,22 +128,22 @@ class Iluminacion{
   void trabajoMemoria(int valor){
     switch (valor) {
     case 0:
-      digitalWrite(luz7, HIGH);
-      digitalWrite(luz8, HIGH);
-      digitalWrite(luz4, HIGH);        
-      digitalWrite(luz6, HIGH);
-      break;
-    case 1:   //Se seleccion M1    
-      digitalWrite(luz7, HIGH);
-      digitalWrite(luz8, HIGH);
-      digitalWrite(luz4, HIGH);        
+      digitalWrite(luz7, LOW);
+      digitalWrite(luz8, LOW);
+      digitalWrite(luz4, LOW);        
       digitalWrite(luz6, LOW);
       break;
-    case 2:
-      digitalWrite(luz6, HIGH);
-      digitalWrite(luz8, HIGH);
-      digitalWrite(luz4, HIGH);        
+    case 1:   //Se seleccion M1    
       digitalWrite(luz7, LOW);
+      digitalWrite(luz8, LOW);
+      digitalWrite(luz4, LOW);        
+      digitalWrite(luz6, HIGH);
+      break;
+    case 2:
+      digitalWrite(luz6, LOW);
+      digitalWrite(luz8, LOW);
+      digitalWrite(luz4, LOW);        
+      digitalWrite(luz7, HIGH);
       break;
     default:
     break;    
