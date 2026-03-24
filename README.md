@@ -57,3 +57,28 @@ EEPROM
 Diseño de PCB
 Sistemas Embebidos
 Automatización Industrial
+
+## 🏗️ Estructura del Proyecto
+/src
+  ├── master/
+  │     ├── main.ino
+  │     └── i2c_manager.h
+  │
+  ├── slave/
+  │     ├── slave_controller.ino
+  │     └── register_control.h
+  │
+  ├── drivers/
+  │     ├── eeprom_manager.h
+  │     └── io_control.h
+  │
+  └── ui/
+        └── manual_interface.h
+
+/hardware
+  ├── pcb_design/
+  └── schematics/
+
+/docs
+  ├── architecture.md
+  └── wiring_diagram.png
